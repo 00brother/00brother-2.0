@@ -1,1 +1,372 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Conheça soluções de sites oferecidas pela 00Brother e solicite uma proposta."><meta name="theme-color" content="#172838"><title>Soluções e planos | 00Brother</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css"></head><body><header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html">00<span>Brother</span></a><nav class="nav" aria-label="Navegação principal"><a href="index.html"  class="">Início</a><a href="6.html"  class="">Sites entregues</a><a href="7.html"  class="">Portfólio</a><a href="8.html" aria-current="page" class="">Planos</a><a href="9.html"  class="nav-cta">Orçamento</a></nav></div></header><section class="hero"><div class="hero-inner"><span class="eyebrow">Soluções digitais</span><h1>O plano certo para sua ideia.</h1><p>Cada negócio tem uma necessidade. Conte o que você precisa para receber uma proposta adequada ao escopo do seu projeto.</p><div class="actions"><a class="btn btn-gold" href="9.html">Solicitar orçamento</a><a class="btn btn-outline" href="7.html">Ver nossos trabalhos</a></div></div></section><main class="container"><div class="section-head"><h2>Tipos de projeto</h2><p>Estas são algumas das soluções que podemos conversar e dimensionar juntos.</p></div><div class="grid"><article class="card"><div class="icon">01</div><h3>Landing page</h3><p>Página focada em apresentar uma oferta, campanha, produto ou serviço com uma chamada clara para ação.</p><ul class="checklist"><li>Apresentação objetiva</li><li>Seções personalizadas</li><li>Contato e chamada para ação</li></ul></article><article class="card"><div class="icon">02</div><h3>Site institucional</h3><p>Um espaço profissional para apresentar sua empresa, serviços, diferenciais e canais de contato.</p><ul class="checklist"><li>Apresentação da empresa</li><li>Páginas de serviços</li><li>Informações de contato</li></ul></article><article class="card"><div class="icon">03</div><h3>Projeto personalizado</h3><p>Uma solução pensada para necessidades específicas, funcionalidades ou estruturas sob medida.</p><ul class="checklist"><li>Escopo definido em conjunto</li><li>Funcionalidades específicas</li><li>Proposta personalizada</li></ul></article></div><div class="notice">O valor e o prazo dependem das páginas, funcionalidades, conteúdo e integrações necessárias. Solicite um orçamento para receber uma estimativa clara antes de começar.</div></main><footer class="site-footer"><div class="footer-inner"><div><strong>00Brother</strong><div class="small">Ideias que ganham forma na web.</div></div><div class="small"><a href="mailto:00brotherempresa@gmail.com">00brotherempresa@gmail.com</a> · <a href="https://wa.me/5543991391519">WhatsApp (43) 99139-1519</a></div><div class="small">© 2026 00Brother. Todos os direitos reservados.</div></div></footer><div class="page-transition" aria-hidden="true"></div><script src="transitions.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tabela de preços e serviços da 00Brother. Sites, identidade visual, mídia e manutenção.">
+  <meta name="theme-color" content="#172838">
+  <title>Preços e serviços | 00Brother</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="site.css">
+
+  <style>
+    .price-intro {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 45px;
+    }
+
+    .price-intro h2 {
+      font-size: clamp(27px, 4vw, 38px);
+      margin-bottom: 12px;
+    }
+
+    .price-intro p {
+      line-height: 1.8;
+    }
+
+    .price-section {
+      margin-bottom: 55px;
+    }
+
+    .price-section-title {
+      margin-bottom: 22px;
+      padding-bottom: 13px;
+      border-bottom: 2px solid #c9a84c;
+    }
+
+    .price-section-title h2 {
+      margin: 0;
+      color: #172838;
+      font-size: 25px;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .price-card {
+      background: #fff;
+      border: 1px solid #e7e9ec;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(23,40,56,.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 32px rgba(23,40,56,.12);
+    }
+
+    .price-card h3 {
+      color: #172838;
+      font-size: 19px;
+      margin: 0 0 10px;
+    }
+
+    .price-card p {
+      color: #64717d;
+      font-size: 14px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .price-value {
+      color: #98772c;
+      font-size: 27px;
+      font-weight: 800;
+      margin-top: 20px;
+    }
+
+    .price-value.free {
+      color: #25845b;
+    }
+
+    .price-featured {
+      border: 2px solid #c9a84c;
+    }
+
+    .price-tag {
+      display: inline-block;
+      align-self: flex-start;
+      background: #f6edda;
+      color: #80601b;
+      padding: 5px 11px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .price-notice {
+      background: #f1f4f7;
+      border-left: 4px solid #c9a84c;
+      border-radius: 8px;
+      padding: 18px 22px;
+      color: #465564;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-top: 25px;
+    }
+
+    .price-cta {
+      background: #172838;
+      border-radius: 18px;
+      color: white;
+      text-align: center;
+      padding: 42px 22px;
+      margin: 55px 0;
+    }
+
+    .price-cta h2 {
+      margin-top: 0;
+      font-size: clamp(24px, 4vw, 34px);
+    }
+
+    .price-cta p {
+      color: #d7e0e8;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .price-cta .btn {
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    @media(max-width: 600px) {
+      .price-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card {
+        padding: 22px;
+      }
+
+      .price-section-title h2 {
+        font-size: 21px;
+      }
+
+      .price-cta {
+        padding: 32px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html">00<span>Brother</span></a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html">Início</a>
+      <a href="6.html">Sites entregues</a>
+      <a href="7.html">Portfólio</a>
+      <a href="8.html" aria-current="page">Planos</a>
+      <a href="9.html" class="nav-cta">Orçamento</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Investimento transparente</span>
+    <h1>Nossos serviços e valores.</h1>
+    <p>
+      Soluções digitais para transformar sua ideia em uma presença
+      profissional na internet, com preços claros e acessíveis.
+    </p>
+    <div class="actions">
+      <a class="btn btn-gold" href="9.html">Solicitar orçamento ↗</a>
+      <a class="btn btn-outline" href="#precos">Ver tabela de preços</a>
+    </div>
+  </div>
+</section>
+
+<main class="container" id="precos">
+
+  <div class="price-intro">
+    <span class="eyebrow" style="color:#927321">Tabela oficial</span>
+    <h2>Encontre a solução ideal para você.</h2>
+    <p>
+      Confira nossos serviços e valores. Você pode contratar
+      um site completo ou adicionar serviços para melhorar
+      a apresentação e o desempenho da sua empresa.
+    </p>
+  </div>
+
+  <!-- CRIAÇÃO DE SITES -->
+  <section class="price-section">
+    <div class="price-section-title">
+      <h2>01. Criação de sites</h2>
+    </div>
+
+    <div class="price-grid">
+
+      <article class="price-card">
+        <span class="price-tag">Página única</span>
+        <h3>One Page</h3>
+        <p>
+          Formato de página única que possibilita a apresentação
+          da marca e do serviço, servindo como uma ponte entre
+          você e o cliente.
+        </p>
+        <div class="price-value">R$ 100,00</div>
+      </article>
+
+      <article class="price-card price-featured">
+        <span class="price-tag">Site completo</span>
+        <h3>Web Page</h3>
+        <p>
+          Formato de site completo que traz tudo o que você
+          precisa, desde produtos até formas de pagamento.
+        </p>
+        <div class="price-value">R$ 400,00</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ADICIONAIS -->
+  <section class="price-section">
+    <div class="price-section-title">
+      <h2>02. Adicionais e melhoria de desempenho</h2>
+    </div>
+
+    <div class="price-grid">
+
+      <article class="price-card">
+        <h3>Criação de Logo</h3>
+        <p>Criação de uma identidade visual para representar sua empresa.</p>
+        <div class="price-value">R$ 25,00</div>
+      </article>
+
+      <article class="price-card">
+        <h3>Postagem no Google</h3>
+        <p>Serviço de postagem para divulgar sua empresa no Google.</p>
+        <div class="price-value">R$ 20,00</div>
+      </article>
+
+      <article class="price-card">
+        <h3>Postagem no Google Maps</h3>
+        <p>Divulgação da sua empresa no Google Maps.</p>
+        <div class="price-value">R$ 30,00</div>
+      </article>
+
+      <article class="price-card">
+        <h3>Criação de Gmail empresarial</h3>
+        <p>Criação de uma conta Gmail para sua empresa, se necessário.</p>
+        <div class="price-value free">Grátis</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ESTÉTICA E MÍDIA -->
+  <section class="price-section">
+    <div class="price-section-title">
+      <h2>03. Estética e mídia</h2>
+    </div>
+
+    <div class="price-grid">
+
+      <article class="price-card">
+        <h3>Banners rotativos</h3>
+        <p>Imagens que ficam alternando na apresentação do site.</p>
+        <div class="price-value">R$ 5,00</div>
+      </article>
+
+      <article class="price-card">
+        <h3>Tela de abertura</h3>
+        <p>Tela de abertura personalizada com a logo da sua empresa.</p>
+        <div class="price-value">R$ 10,00</div>
+      </article>
+
+      <article class="price-card">
+        <h3>Adição de vídeo</h3>
+        <p>Adição de um vídeo de até 1 minuto ao site.</p>
+        <div class="price-value">R$ 10,00</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- MANUTENÇÃO -->
+  <section class="price-section">
+    <div class="price-section-title">
+      <h2>04. Manutenção</h2>
+    </div>
+
+    <div class="price-grid">
+
+      <article class="price-card">
+        <h3>Atualização de Site</h3>
+        <p>
+          Serviço de atualização e manutenção de conteúdo.
+          Válido apenas para sites desenvolvidos pela 00Brother.
+        </p>
+        <div class="price-value">R$ 50,00</div>
+      </article>
+
+    </div>
+
+    <div class="price-notice">
+      <strong>Importante:</strong> o serviço de atualização de site
+      é válido exclusivamente para páginas desenvolvidas pela 00Brother.
+    </div>
+  </section>
+
+  <!-- CHAMADA FINAL -->
+  <section class="price-cta">
+    <h2>Gostou de algum serviço?</h2>
+    <p>
+      Entre em contato com nossa equipe e conte o que você precisa.
+      Vamos conversar sobre seu projeto!
+    </p>
+    <a
+      class="btn btn-gold"
+      href="https://wa.me/5543991391519?text=Olá!%20Gostaria%20de%20conhecer%20os%20serviços%20e%20valores%20da%2000Brother."
+      target="_blank"
+      rel="noopener"
+    >
+      Conversar pelo WhatsApp ↗
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <strong>00Brother</strong>
+      <div class="small">Ideias que ganham forma na web.</div>
+    </div>
+
+    <div class="small">
+      <a href="mailto:00brotherempresa@gmail.com">00brotherempresa@gmail.com</a>
+      ·
+      <a href="https://wa.me/5543991391519">WhatsApp (43) 99139-1519</a>
+    </div>
+
+    <div class="small">
+      © 2026 00Brother. Todos os direitos reservados.
+    </div>
+  </div>
+</footer>
+
+<div class="page-transition" aria-hidden="true"></div>
+<script src="transitions.js"></script>
+
+</body>
+</html>
