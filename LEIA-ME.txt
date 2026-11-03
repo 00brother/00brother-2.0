@@ -1,0 +1,53 @@
+00BROTHER — COMO EDITAR A EQUIPE E OS PORTFÓLIOS
+================================================
+
+1) COLOCAR FOTO DE UMA PESSOA
+- Abra a pasta assets.
+- Copie a foto para dentro dela. Exemplo: assets/gabriel.jpg
+- Abra equipe.js.
+- No cadastro da pessoa, preencha: foto: "assets/gabriel.jpg"
+- Salve. A foto aparece na página inicial, na página Portfólio e no portfólio individual.
+
+2) MUDAR NOME, FUNÇÃO E APRESENTAÇÃO
+- Abra equipe.js.
+- Encontre o cadastro da pessoa.
+- Edite nome, funcao e descricao.
+- Não altere o campo pessoa (gabriel/perola/hubert), pois ele conecta a pessoa aos projetos.
+
+3) ADICIONAR UMA PESSOA
+- Copie um dos blocos dentro do array equipe em equipe.js.
+- Altere pessoa, nome, funcao, descricao e foto.
+- Crie também uma página individual .html para essa pessoa, usando uma das páginas individuais como modelo.
+- Para adicionar muitos integrantes, pode ser necessário ajustar a navegação e os arquivos individuais.
+
+4) ADICIONAR UM PROJETO AO PORTFÓLIO
+- Coloque a imagem na pasta assets, por exemplo assets/site-loja.jpg.
+- Abra projetos.js e adicione um objeto dentro do array projetos:
+  {
+    pessoa: "gabriel",
+    titulo: "Site da Loja",
+    descricao: "Site institucional para apresentar a marca.",
+    imagem: "assets/site-loja.jpg",
+    link: "https://endereco-do-site.com",
+    entregue: true
+  },
+- pessoa deve ser gabriel, perola ou hubert.
+- entregue: true também mostra o projeto em 6.html (Sites entregues).
+- Se não houver imagem ou link, use "".
+
+5) ARQUIVOS IMPORTANTES
+- equipe.js: nomes, funções, apresentações e fotos da equipe.
+- projetos.js: cadastro dos projetos de cada portfólio.
+- assets/: pasta para guardar fotos de pessoas e imagens de projetos.
+- index.html: página inicial.
+- 7.html: página com os portfólios da equipe.
+
+DICA: use nomes simples nos arquivos de imagem, sem espaços ou acentos.
+Exemplo: foto-perola.jpg
+
+6) ABERTURA ANIMADA
+- A abertura da marca é exibida na página inicial.
+- A logo original está em assets/logo-00brother.png (fundo transparente).
+- A animação fecha automaticamente; também existe o botão "Pular abertura".
+- Para testar novamente, abra uma nova aba/sessão do navegador ou limpe o armazenamento de sessão do site.
+- intro.js controla a abertura; site.css controla os efeitos visuais.
