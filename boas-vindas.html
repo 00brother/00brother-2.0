@@ -1,32 +1,56 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#172838">
-  <meta name="description" content="Bem-vindo à 00Brother. Desenvolvimento de aplicações com impacto social e inovação tecnológica.">
+  <meta name="theme-color" content="#101820">
+  <meta name="description" content="Bem-vindo à 00Brother. Tecnologia, inovação e impacto social.">
   <title>Bem-vindo | 00Brother</title>
-  <link rel="stylesheet" href="site.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
     }
 
-    body.welcome-page {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       margin: 0;
       min-height: 100vh;
       font-family: 'Poppins', Arial, sans-serif;
-      color: white;
-      background: linear-gradient(120deg, #172838, #2c3e50);
+      color: #fff;
+      background: #101820;
     }
 
-    .welcome {
+    .welcome-background {
       min-height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(7, 13, 20, .94),
+          rgba(18, 35, 50, .82),
+          rgba(9, 17, 25, .92)
+        ),
+        url("assets/fundo-boas-vindas.jpg") center/cover no-repeat;
+      background-attachment: fixed;
+    }
+
+    .welcome-main {
+      flex: 1;
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
       justify-content: center;
-      padding: 55px 20px;
+      align-items: center;
+      padding: 65px 22px;
     }
 
     .welcome-content {
@@ -38,14 +62,14 @@
 
     .welcome-logo {
       display: block;
-      width: min(100%, 390px);
-      max-height: 190px;
+      width: min(100%, 370px);
+      max-height: 185px;
       object-fit: contain;
-      background: white;
-      border-radius: 14px;
+      background: #fff;
       padding: 10px;
-      margin: 0 auto 35px;
-      box-shadow: 0 15px 45px rgba(0,0,0,.22);
+      border-radius: 13px;
+      margin: 0 auto 36px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.35);
     }
 
     .welcome-badge {
@@ -54,26 +78,28 @@
       color: #dfc27d;
       border-radius: 30px;
       padding: 9px 20px;
-      font-size: 12px;
+      font-size: 11px;
+      font-weight: 600;
       letter-spacing: 2px;
       margin-bottom: 22px;
     }
 
-    .welcome h1 {
-      font-size: clamp(34px, 6vw, 58px);
-      line-height: 1.12;
-      margin: 0 0 22px;
+    .welcome-content h1 {
+      font-size: clamp(34px, 6vw, 59px);
+      line-height: 1.15;
+      margin: 0 0 23px;
+      font-weight: 800;
     }
 
-    .welcome h1 span {
+    .welcome-content h1 span {
       color: #dfc27d;
     }
 
     .welcome-description {
       max-width: 690px;
       margin: 0 auto;
-      color: #e2e9ef;
-      font-size: 16px;
+      color: #e0e6ec;
+      font-size: 15px;
       line-height: 1.9;
     }
 
@@ -81,16 +107,19 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 35px;
+      gap: 15px;
+      margin-top: 36px;
     }
 
     .welcome-btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 15px 27px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 51px;
+      padding: 14px 28px;
       border-radius: 8px;
       font-weight: 700;
+      text-decoration: none;
       transition: .25s ease;
     }
 
@@ -100,26 +129,72 @@
 
     .welcome-primary {
       color: #172838;
-      background: #dfc27d;
+      background: linear-gradient(135deg, #dfc27d, #c9a84c);
+      box-shadow: 0 7px 22px rgba(201,168,76,.22);
     }
 
     .welcome-secondary {
-      color: white;
-      border: 1px solid rgba(255,255,255,.6);
+      color: #fff;
+      border: 1px solid rgba(223,194,125,.7);
+      background: rgba(255,255,255,.04);
     }
 
-    .welcome-contact {
-      margin-top: 65px;
-      padding-top: 25px;
-      border-top: 1px solid rgba(255,255,255,.2);
-      color: #d7e0e8;
+    .welcome-secondary:hover {
+      background: rgba(201,168,76,.13);
+    }
+
+    /* RODAPÉ ESCURO */
+
+    .welcome-footer {
+      background: #05090e;
+      border-top: 2px solid #c9a84c;
+      padding: 35px 20px 22px;
+      text-align: center;
+      box-shadow: 0 -10px 35px rgba(0,0,0,.25);
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-title {
+      display: block;
+      color: #dfc27d;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-description {
+      color: #c5cbd2;
       font-size: 13px;
-      line-height: 2;
+      margin-bottom: 17px;
     }
 
-    .welcome-contact a {
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin-bottom: 23px;
+    }
+
+    .footer-links a {
       color: #dfc27d;
       text-decoration: none;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-copy {
+      border-top: 1px solid #29323b;
+      padding-top: 18px;
+      color: #929ba5;
+      font-size: 11px;
     }
 
     @keyframes welcomeIn {
@@ -133,13 +208,18 @@
       }
     }
 
-    @media (max-width: 600px) {
-      .welcome {
-        padding: 35px 20px;
+    @media(max-width: 600px) {
+      .welcome-background {
+        background-attachment: scroll;
+      }
+
+      .welcome-main {
+        min-height: auto;
+        padding: 45px 20px 55px;
       }
 
       .welcome-logo {
-        width: min(100%, 300px);
+        width: min(100%, 290px);
         margin-bottom: 28px;
       }
 
@@ -155,12 +235,17 @@
         width: 100%;
       }
 
-      .welcome-contact {
-        margin-top: 45px;
+      .welcome-footer {
+        padding: 30px 18px 20px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 12px;
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
+    @media(prefers-reduced-motion: reduce) {
       .welcome-content {
         animation: none;
       }
@@ -172,8 +257,11 @@
   </style>
 </head>
 
-<body class="welcome-page">
-  <main class="welcome">
+<body>
+
+<div class="welcome-background">
+
+  <main class="welcome-main">
     <div class="welcome-content">
 
       <img
@@ -182,9 +270,13 @@
         alt="Logo original da 00Brother"
       >
 
-      <div class="welcome-badge">PLATAFORMA EXCLUSIVA</div>
+      <div class="welcome-badge">
+        PLATAFORMA EXCLUSIVA
+      </div>
 
-      <h1>Bem-vindo à <span>00Brother</span></h1>
+      <h1>
+        Bem-vindo à <span>00Brother</span>
+      </h1>
 
       <p class="welcome-description">
         Você está acessando a plataforma da 00Brother,
@@ -195,28 +287,49 @@
       </p>
 
       <div class="welcome-actions">
-       <a href="principal.html" class="welcome-btn welcome-primary">
-  Conhecer a 00Brother →
-</a>
+
+        <a href="principal.html" class="welcome-btn welcome-primary">
+          Conhecer a 00Brother →
+        </a>
 
         <a href="#contato" class="welcome-btn welcome-secondary">
           Saiba Mais
         </a>
-      </div>
 
-      <footer class="welcome-contact" id="contato">
-        <strong>00Brother — Grupo Corporativo</strong><br>
-        <a href="mailto:00brotherempresa@gmail.com">
-          00brotherempresa@gmail.com
-        </a><br>
-        <a href="https://wa.me/5543991391519" target="_blank" rel="noopener">
-          WhatsApp: (43) 99139-1519
-        </a><br>
-        © 2026 00Brother. Todos os direitos reservados.
-      </footer>
+      </div>
 
     </div>
   </main>
+
+  <footer class="welcome-footer" id="contato">
+    <div class="footer-content">
+
+      <strong class="footer-title">
+        00Brother — Grupo Corporativo
+      </strong>
+
+      <p class="footer-description">
+        Desenvolvimento de aplicações, tecnologia e inovação social.
+      </p>
+
+      <div class="footer-links">
+        <a href="mailto:00brotherempresa@gmail.com">
+          00brotherempresa@gmail.com
+        </a>
+
+        <a href="https://wa.me/5543991391519" target="_blank" rel="noopener">
+          WhatsApp: (43) 99139-1519
+        </a>
+      </div>
+
+      <div class="footer-copy">
+        © 2026 00Brother. Todos os direitos reservados.
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+
 </body>
 </html>
-```

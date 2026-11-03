@@ -1,27 +1,26 @@
-
 (() => {
   const intro = document.getElementById("brand-intro");
+
   if (!intro) return;
 
   const skip = document.getElementById("intro-skip");
-  const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
 
   let closed = false;
 
   function closeIntro() {
     if (closed) return;
-    closed = true;
 
+    closed = true;
     intro.classList.add("intro-leaving");
+
+    sessionStorage.setItem("00brother-intro-seen", "1");
 
     setTimeout(() => {
       window.location.replace("boas-vindas.html");
-    }, reduceMotion ? 0 : 480);
+    }, 450);
   }
 
-  if (reduceMotion) {
+  if (sessionStorage.getItem("00brother-intro-seen") === "1") {
     window.location.replace("boas-vindas.html");
     return;
   }
@@ -31,8 +30,10 @@
   }
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeIntro();
+    if (event.key === "Escape") {
+      closeIntro();
+    }
   });
 
-  setTimeout(closeIntro, 1450);
+  setTimeout(closeIntro, 1500);
 })();
