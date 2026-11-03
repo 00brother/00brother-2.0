@@ -51,3 +51,8 @@ Exemplo: foto-perola.jpg
 - A animação fecha automaticamente; também existe o botão "Pular abertura".
 - Para testar novamente, abra uma nova aba/sessão do navegador ou limpe o armazenamento de sessão do site.
 - intro.js controla a abertura; site.css controla os efeitos visuais.
+
+7) LOGO DA ABERTURA
+- A abertura usa a imagem original enviada, sem remover o fundo branco nem redesenhar a marca: assets/logo-00brother-original.jpeg.
+- A abertura tem fundo branco para combinar com a imagem original.
+- O layout recebeu ajustes extras para telas pequenas, incluindo menu horizontal rolável e formulários adaptados.

@@ -1,31 +1,66 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="00Brother: criação de sites profissionais e experiências digitais."><meta name="theme-color" content="#172838"><title>Início | 00Brother</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css"></head><body class="has-intro">
-<div class="brand-intro" id="brand-intro" aria-label="Abertura 00Brother">
-  <div class="intro-orbit orbit-one"></div>
-  <div class="intro-orbit orbit-two"></div>
-  <div class="intro-content">
-    <div class="intro-logo-wrap">
-      <span class="intro-pulse"></span>
-      <img class="intro-logo" src="assets/logo-00brother.png" alt="00Brother — Grupo Corporativo">
-    </div>
-    <p class="intro-caption">GRUPO CORPORATIVO <i></i> DESENVOLVIMENTO DE APPS <i></i> IMPACTO SOCIAL</p>
-    <div class="intro-loader"><span></span></div>
-  </div>
-  <button class="intro-skip" id="intro-skip" type="button">Pular abertura <span>→</span></button>
-</div>
-<header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html">00<span>Brother</span></a><nav class="nav" aria-label="Navegação principal"><a href="index.html" aria-current="page" class="">Início</a><a href="6.html"  class="">Sites entregues</a><a href="7.html"  class="">Portfólio</a><a href="8.html"  class="">Planos</a><a href="9.html"  class="nav-cta">Orçamento</a></nav></div></header><section class="hero"><div class="hero-inner reveal"><span class="eyebrow">Estúdio digital · 00Brother</span><h1>Seu negócio merece<br>um site à altura.</h1><p>Criamos experiências digitais com visual profissional, navegação simples e foco no que importa: apresentar sua marca e aproximar você dos seus clientes.</p><div class="actions"><a class="btn btn-gold" href="9.html">Quero criar meu site ↗</a><a class="btn btn-outline" href="7.html">Explorar portfólio</a></div></div></section>
-<main class="container"><section class="section-head"><span class="eyebrow" style="color:#927321">O que fazemos</span><h2>Uma presença digital que trabalha pela sua marca.</h2><p>Do primeiro contato à publicação, ajudamos a transformar sua ideia em uma experiência online clara, bonita e funcional.</p></section><div class="grid">
-<article class="card"><div class="icon">01</div><h3>Sites profissionais</h3><p>Apresente seus serviços, diferenciais e informações com uma estrutura organizada e adaptada ao celular.</p><a class="project-link" href="8.html">Conhecer soluções →</a></article>
-<article class="card"><div class="icon">02</div><h3>Projetos e portfólios</h3><p>Conheça os trabalhos da equipe e veja os projetos organizados por profissional.</p><a class="project-link" href="7.html">Ver portfólio →</a></article>
-<article class="card"><div class="icon">03</div><h3>Atendimento próximo</h3><p>Conte sua ideia, tire dúvidas e receba uma proposta alinhada ao que seu negócio precisa.</p><a class="project-link" href="9.html">Pedir orçamento →</a></article></div></main>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>00Brother</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<section class="container team-home" id="equipe">
-  <div class="section-head">
-    <span class="eyebrow" style="color:#927321">Quem faz acontecer</span>
-    <h2>Conheça as pessoas por trás da 00Brother.</h2>
-    <p>Veja quem cuida de cada etapa e conheça os trabalhos individuais de cada profissional.</p>
-  </div>
-  <div class="grid" id="home-team"></div>
-  <div class="team-edit-hint"><strong>Área da equipe:</strong> nomes, funções, descrições e fotos são editados no arquivo <code>equipe.js</code>. Coloque as fotos na pasta <code>assets</code> e informe o caminho no campo <code>foto</code>.</div>
-</section>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      font-family: Arial, sans-serif;
+    }
 
-<section class="band"><div class="band-inner"><div><h2>Vamos construir seu próximo projeto?</h2><p>Explique sua ideia. A gente conversa sobre o melhor caminho.</p></div><a class="btn btn-gold" href="9.html">Falar com a equipe ↗</a></div></section><footer class="site-footer"><div class="footer-inner"><div><strong>00Brother</strong><div class="small">Ideias que ganham forma na web.</div></div><div class="small"><a href="mailto:00brotherempresa@gmail.com">00brotherempresa@gmail.com</a> · <a href="https://wa.me/5543991391519">WhatsApp (43) 99139-1519</a></div><div class="small">© 2026 00Brother. Todos os direitos reservados.</div></div></footer><div class="page-transition" aria-hidden="true"></div><script src="intro.js"></script><script src="equipe.js"></script><script>renderTeam("home-team");</script><script src="transitions.js"></script></body></html>
+    .abertura {
+      text-align: center;
+      animation: aparecer 1s ease;
+    }
+
+    .abertura img {
+      display: block;
+      width: min(75vw, 340px);
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .carregando {
+      width: 42px;
+      height: 42px;
+      margin: 25px auto 0;
+      border: 4px solid #e5e5e5;
+      border-top-color: #c9a84c;
+      border-radius: 50%;
+      animation: girar 0.8s linear infinite;
+    }
+
+    @keyframes girar {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <main class="abertura">
+    <img src="assets/logo-00brother-original.jpeg" alt="Logo 00Brother">
+    <div class="carregando"></div>
+  </main>
+
+  <script>
+    setTimeout(() => {
+      window.location.replace("boas-vindas.html");
+    }, 1800);
+  </script>
+</body>
+</html>
