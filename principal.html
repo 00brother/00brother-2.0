@@ -16,85 +16,288 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="site.css">
+
+  <style>
+    /* CARROSSEL PRINCIPAL */
+    .hero.hero-carousel {
+      --hero-accent: #d6b45b;
+      --hero-text: #ffffff;
+      --hero-muted: #e0e6ed;
+      --hero-button-text: #172838;
+
+      position: relative;
+      overflow: hidden;
+      color: var(--hero-text);
+      background: #102337;
+    }
+
+    /* Mantém a marca totalmente branca */
+    .brand,
+    .brand span {
+      color: #ffffff !important;
+    }
+
+    .hero-carousel .hero-slides {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      width: 100%;
+    }
+
+    .hero-carousel .hero-slide {
+      grid-area: 1 / 1;
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+      min-height: 490px;
+      box-sizing: border-box;
+      padding: 100px 24px;
+      display: flex;
+      align-items: center;
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s ease,
+        visibility .8s;
+
+      pointer-events: none;
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Fotos reais de fundo com sobreposição escura */
+    .hero-carousel .hero-slide:nth-child(1) {
+      background-image:
+        linear-gradient(90deg, rgba(10, 25, 40, .94), rgba(10, 25, 40, .68)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85");
+    }
+
+    .hero-carousel .hero-slide:nth-child(2) {
+      background-image:
+        linear-gradient(90deg, rgba(10, 25, 40, .94), rgba(10, 25, 40, .68)),
+        url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=85");
+    }
+
+    .hero-carousel .hero-slide:nth-child(3) {
+      background-image:
+        linear-gradient(90deg, rgba(10, 25, 40, .94), rgba(10, 25, 40, .68)),
+        url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=85");
+    }
+
+    .hero-carousel .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .hero-carousel .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 1100px);
+      margin: 0 auto;
+    }
+
+    .hero-carousel .eyebrow {
+      color: #d6b45b !important;
+    }
+
+    .hero-carousel h1 {
+      color: #ffffff !important;
+    }
+
+    .hero-carousel p {
+      color: #e0e6ed !important;
+    }
+
+    .hero-carousel .btn-gold {
+      background: #d6b45b !important;
+      color: #172838 !important;
+      border-color: #d6b45b !important;
+    }
+
+    .hero-carousel .btn-outline {
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+    }
+
+    .hero-carousel .hero-dots {
+      position: absolute;
+      z-index: 5;
+      bottom: 22px;
+      left: 0;
+      right: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-carousel .hero-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .5);
+      cursor: pointer;
+      transition: all .35s ease;
+    }
+
+    .hero-carousel .hero-dot.active {
+      width: 30px;
+      background: #d6b45b;
+    }
+
+    .hero-carousel .hero-dot:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .hero-carousel .hero-slide {
+        min-height: 480px;
+        padding: 70px 20px 85px;
+        background-position: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-carousel .hero-slide,
+      .hero-carousel .hero-dot {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
-<body class="has-intro">
-
+<body>
 
   <!-- CABEÇALHO -->
   <header class="site-header">
-
     <div class="nav-wrap">
 
-      <a class="brand" href="principal.html"
+      <a class="brand" href="principal.html">
         00<span>Brother</span>
       </a>
 
       <nav class="nav" aria-label="Navegação principal">
-
-        <a href="principal.html">
-          Início
-        </a>
-
-        <a href="6.html">
-          Sites entregues
-        </a>
-
-        <a href="7.html">
-          Portfólio
-        </a>
-
-        <a href="8.html">
-          Planos
-        </a>
-
-        <a href="9.html" class="nav-cta">
-          Orçamento
-        </a>
-
+        <a href="principal.html" aria-current="page">Início</a>
+        <a href="6.html">Sites entregues</a>
+        <a href="8.html">Planos</a>
+        <a href="9.html" class="nav-cta">Orçamento</a>
       </nav>
 
     </div>
-
   </header>
 
+  <!-- CARROSSEL PRINCIPAL -->
+  <section class="hero hero-carousel">
 
-  <!-- APRESENTAÇÃO PRINCIPAL -->
-  <section class="hero">
+    <div class="hero-slides">
 
-    <div class="hero-inner reveal">
+      <!-- BANNER 1 -->
+      <article class="hero-slide active">
+        <div class="hero-inner">
 
-      <span class="eyebrow">
-        Estúdio digital · 00Brother
-      </span>
+          <span class="eyebrow">Estúdio digital · 00Brother</span>
 
-      <h1>
-        Seu negócio merece<br>
-        um site à altura.
-      </h1>
+          <h1>
+            Seu negócio merece<br>
+            um site à altura.
+          </h1>
 
-      <p>
-        Criamos experiências digitais com visual profissional,
-        navegação simples e foco no que importa: apresentar
-        sua marca e aproximar você dos seus clientes.
-      </p>
+          <p>
+            Criamos experiências digitais com visual profissional,
+            navegação simples e foco no que importa: apresentar
+            sua marca e aproximar você dos seus clientes.
+          </p>
 
-      <div class="actions">
+          <div class="actions">
+            <a class="btn btn-gold" href="9.html">
+              Quero criar meu site ↗
+            </a>
 
-        <a class="btn btn-gold" href="9.html">
-          Quero criar meu site ↗
-        </a>
+            <a class="btn btn-outline" href="#equipe">
+              Conhecer nossa equipe
+            </a>
+          </div>
 
-        <a class="btn btn-outline" href="7.html">
-          Explorar portfólio
-        </a>
+        </div>
+      </article>
 
-      </div>
+      <!-- BANNER 2 -->
+      <article class="hero-slide">
+        <div class="hero-inner">
+
+          <span class="eyebrow">Sua marca no mundo digital</span>
+
+          <h1>
+            Transforme sua ideia<br>
+            em presença online.
+          </h1>
+
+          <p>
+            Tenha um site moderno, adaptado para celulares
+            e preparado para apresentar seus produtos e serviços
+            de maneira profissional.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-gold" href="8.html">
+              Conhecer nossos planos ↗
+            </a>
+
+            <a class="btn btn-outline" href="6.html">
+              Ver sites entregues
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- BANNER 3 -->
+      <article class="hero-slide">
+        <div class="hero-inner">
+
+          <span class="eyebrow">Criatividade, tecnologia e pessoas</span>
+
+          <h1>
+            Por trás de cada projeto,<br>
+            existe uma equipe.
+          </h1>
+
+          <p>
+            Somos a 00Brother. Unimos desenvolvimento,
+            design e criatividade para tirar projetos do papel
+            e construir experiências digitais.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-gold" href="#equipe">
+              Conhecer a equipe ↗
+            </a>
+
+            <a class="btn btn-outline" href="9.html">
+              Fale conosco
+            </a>
+          </div>
+
+        </div>
+      </article>
 
     </div>
 
-  </section>
+    <!-- INDICADORES -->
+    <div class="hero-dots" aria-label="Escolher banner"></div>
 
+  </section>
 
   <!-- SERVIÇOS -->
   <main class="container">
@@ -116,11 +319,9 @@
 
     </section>
 
-
     <div class="grid">
 
       <article class="card">
-
         <div class="icon">01</div>
 
         <h3>Sites profissionais</h3>
@@ -133,30 +334,24 @@
         <a class="project-link" href="8.html">
           Conhecer soluções →
         </a>
-
       </article>
 
-
       <article class="card">
-
         <div class="icon">02</div>
 
-        <h3>Projetos e portfólios</h3>
+        <h3>Design e identidade visual</h3>
 
         <p>
-          Conheça os trabalhos da equipe e veja os projetos
-          organizados por profissional.
+          Criamos elementos visuais para destacar sua marca
+          e transmitir profissionalismo em cada detalhe.
         </p>
 
-        <a class="project-link" href="7.html">
-          Ver portfólio →
+        <a class="project-link" href="9.html">
+          Solicitar criação →
         </a>
-
       </article>
 
-
       <article class="card">
-
         <div class="icon">03</div>
 
         <h3>Atendimento próximo</h3>
@@ -169,13 +364,11 @@
         <a class="project-link" href="9.html">
           Pedir orçamento →
         </a>
-
       </article>
 
     </div>
 
   </main>
-
 
   <!-- EQUIPE -->
   <section class="container team-home" id="equipe">
@@ -183,36 +376,55 @@
     <div class="section-head">
 
       <span class="eyebrow" style="color:#927321">
-        Quem faz acontecer
+        Nossa equipe
       </span>
 
       <h2>
-        Conheça as pessoas por trás da 00Brother.
+        Quem faz a 00Brother acontecer.
       </h2>
 
       <p>
-        Veja quem cuida de cada etapa e conheça os trabalhos
-        individuais de cada profissional.
+        Conheça as pessoas responsáveis por transformar
+        ideias em experiências digitais.
       </p>
 
     </div>
 
-    <div class="grid" id="home-team"></div>
+    <div class="team-grid">
 
-    <div class="team-edit-hint">
+      <article class="member-card">
+        <div class="member-avatar">G</div>
+        <h3>Gabriel</h3>
+        <p>Fundador e proprietário</p>
+      </article>
 
-      <strong>Área da equipe:</strong>
+      <article class="member-card">
+        <div class="member-avatar">P</div>
+        <h3>Pérola</h3>
+        <p>Designer</p>
+      </article>
 
-      nomes, funções, descrições e fotos são editados
-      no arquivo <code>equipe.js</code>.
+      <article class="member-card">
+        <div class="member-avatar">H</div>
+        <h3>Hubert</h3>
+        <p>Desenvolvedor Back-end</p>
+      </article>
 
-      Coloque as fotos na pasta <code>assets</code>
-      e informe o caminho no campo <code>foto</code>.
+      <article class="member-card">
+        <div class="member-avatar">A</div>
+        <h3>Andrey</h3>
+        <p>Desenvolvedor Back-end</p>
+      </article>
+
+      <article class="member-card">
+        <div class="member-avatar">B</div>
+        <h3>Benjamin</h3>
+        <p>Desenvolvedor Front-end</p>
+      </article>
 
     </div>
 
   </section>
-
 
   <!-- CHAMADA FINAL -->
   <section class="band">
@@ -220,15 +432,11 @@
     <div class="band-inner">
 
       <div>
-
-        <h2>
-          Vamos construir seu próximo projeto?
-        </h2>
+        <h2>Vamos construir seu próximo projeto?</h2>
 
         <p>
           Explique sua ideia. A gente conversa sobre o melhor caminho.
         </p>
-
       </div>
 
       <a class="btn btn-gold" href="9.html">
@@ -239,25 +447,20 @@
 
   </section>
 
-
   <!-- RODAPÉ -->
   <footer class="site-footer">
 
     <div class="footer-inner">
 
       <div>
-
         <strong>00Brother</strong>
 
         <div class="small">
           Ideias que ganham forma na web.
         </div>
-
       </div>
 
-
       <div class="small">
-
         <a href="mailto:00brotherempresa@gmail.com">
           00brotherempresa@gmail.com
         </a>
@@ -267,9 +470,7 @@
         <a href="https://wa.me/5543991391519">
           WhatsApp (43) 99139-1519
         </a>
-
       </div>
-
 
       <div class="small">
         © 2026 00Brother. Todos os direitos reservados.
@@ -279,20 +480,102 @@
 
   </footer>
 
-
   <div class="page-transition" aria-hidden="true"></div>
 
-
-  <!-- SCRIPTS -->
-
-  <script src="equipe.js"></script>
-
+  <!-- SCRIPT DO CARROSSEL -->
   <script>
-    if (typeof renderTeam === "function") {
-      renderTeam("home-team");
-    }
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const carousel = document.querySelector(".hero-carousel");
+      if (!carousel) return;
+
+      const slides = Array.from(
+        carousel.querySelectorAll(".hero-slide")
+      );
+
+      const dotsContainer = carousel.querySelector(".hero-dots");
+
+      if (!slides.length || !dotsContainer) return;
+
+      let current = 0;
+      let timer;
+
+      slides.forEach((slide, index) => {
+
+        const dot = document.createElement("button");
+
+        dot.type = "button";
+        dot.className = "hero-dot";
+        dot.setAttribute("aria-label", "Mostrar banner " + (index + 1));
+
+        dot.addEventListener("click", () => {
+          showSlide(index);
+          restartTimer();
+        });
+
+        dotsContainer.appendChild(dot);
+
+      });
+
+      const dots = Array.from(
+        dotsContainer.querySelectorAll(".hero-dot")
+      );
+
+      function showSlide(index) {
+
+        slides[current].classList.remove("active");
+        dots[current].classList.remove("active");
+        dots[current].setAttribute("aria-current", "false");
+
+        current = index;
+
+        slides[current].classList.add("active");
+        dots[current].classList.add("active");
+        dots[current].setAttribute("aria-current", "true");
+
+      }
+
+      function nextSlide() {
+        showSlide((current + 1) % slides.length);
+      }
+
+      function startTimer() {
+
+        clearInterval(timer);
+
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          timer = setInterval(nextSlide, 5000);
+        }
+
+      }
+
+      function restartTimer() {
+        startTimer();
+      }
+
+      showSlide(0);
+      startTimer();
+
+      carousel.addEventListener("mouseenter", () => {
+        clearInterval(timer);
+      });
+
+      carousel.addEventListener("mouseleave", () => {
+        startTimer();
+      });
+
+      carousel.addEventListener("focusin", () => {
+        clearInterval(timer);
+      });
+
+      carousel.addEventListener("focusout", () => {
+        startTimer();
+      });
+
+    });
   </script>
 
+  <!-- SCRIPT DE TRANSIÇÕES -->
   <script src="transitions.js"></script>
 
 </body>

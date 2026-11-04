@@ -16,6 +16,7 @@
 
 <body class="has-intro">
 
+<!-- ABERTURA DA LOGO -->
 <div class="brand-intro" id="brand-intro" aria-label="Abertura 00Brother">
   <div class="intro-content">
     <div class="intro-logo-wrap">
@@ -40,23 +41,24 @@
   </button>
 </div>
 
+<!-- MENU -->
 <header class="site-header">
   <div class="nav-wrap">
-    <a class="brand" href="index.html">00<span>Brother</span></a>
+    <a class="brand" href="index.html?principal=1">00<span>Brother</span></a>
 
     <nav class="nav" aria-label="Navegação principal">
-      <a href="index.html" aria-current="page">Início</a>
+      <a href="index.html?principal=1" aria-current="page">Início</a>
       <a href="6.html">Sites entregues</a>
-      <a href="7.html">Portfólio</a>
       <a href="8.html">Planos</a>
       <a href="9.html" class="nav-cta">Orçamento</a>
     </nav>
   </div>
 </header>
 
+<!-- APRESENTAÇÃO PRINCIPAL -->
 <section class="hero">
   <div class="hero-inner reveal">
-    <span class="eyebrow">Estúdio digital · 00Brother</span>
+    <span class="eyebrow">ESTÚDIO DIGITAL · 00BROTHER</span>
 
     <h1>Seu negócio merece<br>um site à altura.</h1>
 
@@ -68,16 +70,19 @@
 
     <div class="actions">
       <a class="btn btn-gold" href="9.html">Quero criar meu site ↗</a>
-      <a class="btn btn-outline" href="7.html">Explorar portfólio</a>
+      <a class="btn btn-outline" href="#equipe">Conhecer nossa equipe</a>
     </div>
   </div>
 </section>
 
 <main class="container">
 
+  <!-- SERVIÇOS -->
   <section class="section-head">
-    <span class="eyebrow" style="color:#927321">O que fazemos</span>
+    <span class="eyebrow" style="color:#927321">O QUE FAZEMOS</span>
+
     <h2>Uma presença digital que trabalha pela sua marca.</h2>
+
     <p>
       Do primeiro contato à publicação, ajudamos a transformar
       sua ideia em uma experiência online clara, bonita e funcional.
@@ -85,6 +90,7 @@
   </section>
 
   <div class="grid">
+
     <article class="card">
       <div class="icon">01</div>
       <h3>Sites profissionais</h3>
@@ -97,12 +103,12 @@
 
     <article class="card">
       <div class="icon">02</div>
-      <h3>Projetos e portfólios</h3>
+      <h3>Design e identidade visual</h3>
       <p>
-        Conheça os trabalhos da equipe e veja os projetos
-        organizados por profissional.
+        Criamos elementos visuais para destacar sua marca
+        e transmitir profissionalismo em cada detalhe.
       </p>
-      <a class="project-link" href="7.html">Ver portfólio →</a>
+      <a class="project-link" href="9.html">Solicitar criação →</a>
     </article>
 
     <article class="card">
@@ -114,40 +120,70 @@
       </p>
       <a class="project-link" href="9.html">Pedir orçamento →</a>
     </article>
-  </div>
 
+  </div>
 </main>
 
+<!-- EQUIPE -->
 <section class="container team-home" id="equipe">
-  <div class="section-head">
-    <span class="eyebrow" style="color:#927321">Quem faz acontecer</span>
-    <h2>Conheça as pessoas por trás da 00Brother.</h2>
-    <p>
-      Veja quem cuida de cada etapa e conheça os trabalhos
-      individuais de cada profissional.
-    </p>
+
+  <div class="section-heading">
+    <span class="eyebrow">NOSSA EQUIPE</span>
+    <h2>Quem faz a 00Brother acontecer</h2>
+    <p>Conheça as pessoas por trás de cada projeto.</p>
   </div>
 
-  <div class="grid" id="home-team"></div>
+  <div class="team-grid">
 
-  <div class="team-edit-hint">
-    <strong>Área da equipe:</strong> nomes, funções, descrições
-    e fotos são editados no arquivo <code>equipe.js</code>.
+    <article class="member-card">
+      <div class="member-avatar">G</div>
+      <h3>Gabriel</h3>
+      <p>Fundador e proprietário</p>
+    </article>
+
+    <article class="member-card">
+      <div class="member-avatar">P</div>
+      <h3>Pérola</h3>
+      <p>Designer</p>
+    </article>
+
+    <article class="member-card">
+      <div class="member-avatar">H</div>
+      <h3>Hubert</h3>
+      <p>Desenvolvedor Back-end</p>
+    </article>
+
+    <article class="member-card">
+      <div class="member-avatar">A</div>
+      <h3>Andrey</h3>
+      <p>Desenvolvedor Back-end</p>
+    </article>
+
+    <article class="member-card">
+      <div class="member-avatar">B</div>
+      <h3>Benjamin</h3>
+      <p>Desenvolvedor Front-end</p>
+    </article>
+
   </div>
 </section>
 
+<!-- CHAMADA PARA ORÇAMENTO -->
 <section class="band">
   <div class="band-inner">
     <div>
       <h2>Vamos construir seu próximo projeto?</h2>
       <p>Explique sua ideia. A gente conversa sobre o melhor caminho.</p>
     </div>
+
     <a class="btn btn-gold" href="9.html">Falar com a equipe ↗</a>
   </div>
 </section>
 
+<!-- RODAPÉ -->
 <footer class="site-footer">
   <div class="footer-inner">
+
     <div>
       <strong>00Brother</strong>
       <div class="small">Ideias que ganham forma na web.</div>
@@ -162,18 +198,14 @@
     <div class="small">
       © 2026 00Brother. Todos os direitos reservados.
     </div>
+
   </div>
 </footer>
 
 <div class="page-transition" aria-hidden="true"></div>
 
+<!-- SCRIPTS -->
 <script src="intro.js"></script>
-<script src="equipe.js"></script>
-<script>
-  if (typeof renderTeam === "function") {
-    renderTeam("home-team");
-  }
-</script>
 <script src="transitions.js"></script>
 
 </body>

@@ -1,1 +1,545 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Solicite um orçamento de criação de site com a 00Brother."><meta name="theme-color" content="#172838"><title>Solicitar orçamento | 00Brother</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css"></head><body><header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html">00<span>Brother</span></a><nav class="nav" aria-label="Navegação principal"><a href="index.html"  class="">Início</a><a href="6.html"  class="">Sites entregues</a><a href="7.html"  class="">Portfólio</a><a href="8.html"  class="">Planos</a><a href="9.html" aria-current="page" class="nav-cta">Orçamento</a></nav></div></header><section class="hero"><div class="hero-inner"><span class="eyebrow">Vamos conversar</span><h1>Conte sua ideia.<br>A gente cuida do digital.</h1><p>Preencha o formulário para explicar o que você precisa. Nossa equipe receberá as informações para entender seu projeto e conversar sobre os próximos passos.</p></div></section><main class="container"><div class="form-layout"><section class="card"><div class="section-head"><h2>Solicitar orçamento</h2><p>Leva poucos minutos. Não há pagamento nesta etapa.</p></div><form id="quoteForm"><div class="form-grid"><div class="field"><label for="nome">Seu nome *</label><input id="nome" name="nome" autocomplete="name" required></div><div class="field"><label for="empresa">Empresa ou negócio</label><input id="empresa" name="empresa" autocomplete="organization"></div><div class="field"><label for="email">E-mail *</label><input id="email" name="email" type="email" autocomplete="email" required></div><div class="field"><label for="whatsapp">WhatsApp</label><input id="whatsapp" name="whatsapp" autocomplete="tel"></div><div class="field full"><label for="tipo">Que tipo de site você procura?</label><select id="tipo" name="tipo"><option>Site institucional</option><option>Landing page</option><option>Loja virtual</option><option>Blog ou portal</option><option>Projeto personalizado</option><option>Ainda não sei — quero orientação</option></select></div><div class="field full"><label for="detalhes">Conte um pouco sobre sua ideia</label><textarea id="detalhes" name="detalhes" placeholder="Qual é o objetivo do site? Quais páginas ou recursos você imagina?"></textarea></div><div class="field full"><button class="btn btn-gold" type="submit">Enviar pedido por e-mail ↗</button><p class="small muted">Ao enviar, seu aplicativo de e-mail será aberto com os dados preenchidos para você confirmar o envio.</p></div></div></form></section><aside class="card"><div class="icon">✦</div><h3>Prefere falar diretamente?</h3><p>Se for mais fácil, entre em contato pelo WhatsApp ou e-mail. Vamos entender sua necessidade e orientar você.</p><div class="actions" style="display:grid"><a class="btn btn-gold" href="https://wa.me/5543991391519?text=Ol%C3%A1%2C%20quero%20conversar%20sobre%20um%20site.">Chamar no WhatsApp</a><a class="btn" style="background:#edf0f2;color:var(--navy)" href="mailto:00brotherempresa@gmail.com">Enviar e-mail</a></div><p class="small muted" style="margin-top:20px">00brotherempresa@gmail.com<br>(43) 99139-1519</p></aside></div></main><script>document.getElementById("quoteForm").addEventListener("submit",function(e){e.preventDefault();const d=new FormData(this);const body=["Nome: "+d.get("nome"),"Empresa: "+d.get("empresa"),"E-mail: "+d.get("email"),"WhatsApp: "+d.get("whatsapp"),"Tipo de site: "+d.get("tipo"),"Detalhes: "+d.get("detalhes")].join("\n");location.href="mailto:00brotherempresa@gmail.com?subject="+encodeURIComponent("Orçamento de site - "+d.get("nome"))+"&body="+encodeURIComponent(body)});</script><footer class="site-footer"><div class="footer-inner"><div><strong>00Brother</strong><div class="small">Ideias que ganham forma na web.</div></div><div class="small"><a href="mailto:00brotherempresa@gmail.com">00brotherempresa@gmail.com</a> · <a href="https://wa.me/5543991391519">WhatsApp (43) 99139-1519</a></div><div class="small">© 2026 00Brother. Todos os direitos reservados.</div></div></footer><div class="page-transition" aria-hidden="true"></div><script src="transitions.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <meta name="description" content="Solicite um orçamento de criação de site com a 00Brother.">
+  <meta name="theme-color" content="#172838">
+
+  <title>Solicitar orçamento | 00Brother</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="site.css">
+
+  <style>
+    /* CARROSSEL DE BANNERS */
+    .hero.hero-carousel {
+      --hero-accent: #d6b45b;
+      --hero-text: #ffffff;
+      --hero-muted: #e0e5eb;
+
+      position: relative;
+      overflow: hidden;
+      color: var(--hero-text);
+      background: #102337;
+    }
+
+    .hero-carousel .hero-slides {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      width: 100%;
+    }
+
+    .hero-carousel .hero-slide {
+      grid-area: 1 / 1;
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      min-height: 470px;
+      padding: 80px 24px;
+      box-sizing: border-box;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease, visibility .8s;
+      pointer-events: none;
+    }
+
+    .hero-carousel .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .hero-carousel .hero-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--hero-image);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-carousel .hero-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        90deg,
+        rgba(5, 15, 27, .94) 0%,
+        rgba(5, 15, 27, .78) 48%,
+        rgba(5, 15, 27, .28) 100%
+      );
+    }
+
+    .hero-carousel .hero-inner {
+      width: min(100%, 1100px);
+      margin: 0 auto;
+    }
+
+    .hero-carousel .eyebrow {
+      color: var(--hero-accent) !important;
+    }
+
+    .hero-carousel h1 {
+      color: var(--hero-text);
+    }
+
+    .hero-carousel p {
+      color: var(--hero-muted);
+    }
+
+    .hero-carousel .btn-gold {
+      background: var(--hero-accent);
+      color: #172838;
+      border-color: var(--hero-accent);
+    }
+
+    .hero-carousel .btn-outline {
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .hero-carousel .hero-dots {
+      position: absolute;
+      bottom: 18px;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-carousel .hero-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 20px;
+      background: rgba(255,255,255,.5);
+      cursor: pointer;
+      transition: all .35s ease;
+    }
+
+    .hero-carousel .hero-dot.active {
+      width: 30px;
+      background: var(--hero-accent);
+    }
+
+    @media (max-width: 600px) {
+      .hero-carousel .hero-slide {
+        min-height: 440px;
+        padding: 65px 20px;
+      }
+
+      .hero-carousel .hero-slide::after {
+        background: rgba(5, 15, 27, .80);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-carousel .hero-slide,
+      .hero-carousel .hero-dot {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="site-header">
+    <div class="nav-wrap">
+
+      <a class="brand" href="principal.html">
+        00<span>Brother</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="principal.html">Início</a>
+        <a href="6.html">Sites entregues</a>
+        <a href="8.html">Planos</a>
+        <a href="9.html" aria-current="page" class="nav-cta">Orçamento</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- CARROSSEL DE ORÇAMENTO -->
+  <section class="hero hero-carousel">
+
+    <div class="hero-slides">
+
+      <!-- BANNER 1 -->
+      <article class="hero-slide active"
+        style="--hero-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2000&q=85')">
+
+        <div class="hero-inner">
+
+          <span class="eyebrow">Vamos conversar · 00Brother</span>
+
+          <h1>
+            Conte sua ideia.<br>
+            A gente cuida do digital.
+          </h1>
+
+          <p>
+            Preencha o formulário para explicar o que você precisa.
+            Nossa equipe receberá as informações para entender
+            seu projeto e conversar sobre os próximos passos.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-gold" href="#orcamento">
+              Solicitar orçamento ↗
+            </a>
+
+            <a class="btn btn-outline" href="https://wa.me/5543991391519">
+              Falar pelo WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- BANNER 2 -->
+      <article class="hero-slide"
+        style="--hero-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=85')">
+
+        <div class="hero-inner">
+
+          <span class="eyebrow">Seu negócio merece crescer</span>
+
+          <h1>
+            Sua ideia merece<br>
+            sair do papel.
+          </h1>
+
+          <p>
+            Seja um site institucional, uma página de divulgação
+            ou um projeto personalizado, estamos prontos
+            para ajudar a construir sua presença digital.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-gold" href="#orcamento">
+              Começar meu projeto ↗
+            </a>
+
+            <a class="btn btn-outline" href="8.html">
+              Conhecer os planos
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- BANNER 3 -->
+      <article class="hero-slide"
+        style="--hero-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=85')">
+
+        <div class="hero-inner">
+
+          <span class="eyebrow">Atendimento próximo e personalizado</span>
+
+          <h1>
+            Vamos construir<br>
+            algo incrível juntos?
+          </h1>
+
+          <p>
+            Explique o que sua empresa precisa.
+            Nossa equipe vai analisar sua ideia e ajudar
+            você a encontrar a melhor solução.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-gold" href="#orcamento">
+              Enviar minha ideia ↗
+            </a>
+
+            <a class="btn btn-outline" href="principal.html#equipe">
+              Conhecer nossa equipe
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+    </div>
+
+    <div class="hero-dots" aria-label="Escolher banner"></div>
+
+  </section>
+
+  <!-- FORMULÁRIO E CONTATO -->
+  <main class="container" id="orcamento">
+
+    <div class="form-layout">
+
+      <section class="card">
+
+        <div class="section-head">
+          <h2>Solicitar orçamento</h2>
+          <p>Leva poucos minutos. Não há pagamento nesta etapa.</p>
+        </div>
+
+        <form id="quoteForm">
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="nome">Seu nome *</label>
+              <input id="nome" name="nome" autocomplete="name" required>
+            </div>
+
+            <div class="field">
+              <label for="empresa">Empresa ou negócio</label>
+              <input id="empresa" name="empresa" autocomplete="organization">
+            </div>
+
+            <div class="field">
+              <label for="email">E-mail *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+
+            <div class="field">
+              <label for="whatsapp">WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" autocomplete="tel">
+            </div>
+
+            <div class="field full">
+              <label for="tipo">Que tipo de site você procura?</label>
+
+              <select id="tipo" name="tipo">
+                <option>Site institucional</option>
+                <option>Landing page</option>
+                <option>Loja virtual</option>
+                <option>Blog ou portal</option>
+                <option>Projeto personalizado</option>
+                <option>Ainda não sei — quero orientação</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="detalhes">Conte um pouco sobre sua ideia</label>
+
+              <textarea
+                id="detalhes"
+                name="detalhes"
+                placeholder="Qual é o objetivo do site? Quais páginas ou recursos você imagina?"
+              ></textarea>
+            </div>
+
+            <div class="field full">
+
+              <button class="btn btn-gold" type="submit">
+                Enviar pedido por e-mail ↗
+              </button>
+
+              <p class="small muted">
+                Ao enviar, seu aplicativo de e-mail será aberto
+                com os dados preenchidos para você confirmar o envio.
+              </p>
+
+            </div>
+
+          </div>
+
+        </form>
+
+      </section>
+
+      <aside class="card">
+
+        <div class="icon">✦</div>
+
+        <h3>Prefere falar diretamente?</h3>
+
+        <p>
+          Se for mais fácil, entre em contato pelo WhatsApp
+          ou e-mail. Vamos entender sua necessidade e orientar você.
+        </p>
+
+        <div class="actions" style="display:grid">
+
+          <a
+            class="btn btn-gold"
+            href="https://wa.me/5543991391519?text=Ol%C3%A1%2C%20quero%20conversar%20sobre%20um%20site."
+          >
+            Chamar no WhatsApp
+          </a>
+
+          <a
+            class="btn"
+            style="background:#edf0f2;color:var(--navy)"
+            href="mailto:00brotherempresa@gmail.com"
+          >
+            Enviar e-mail
+          </a>
+
+        </div>
+
+        <p class="small muted" style="margin-top:20px">
+          00brotherempresa@gmail.com<br>
+          (43) 99139-1519
+        </p>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- ENVIO DO FORMULÁRIO -->
+  <script>
+    document.getElementById("quoteForm").addEventListener("submit", function(e) {
+
+      e.preventDefault();
+
+      const d = new FormData(this);
+
+      const body = [
+        "Nome: " + d.get("nome"),
+        "Empresa: " + d.get("empresa"),
+        "E-mail: " + d.get("email"),
+        "WhatsApp: " + d.get("whatsapp"),
+        "Tipo de site: " + d.get("tipo"),
+        "Detalhes: " + d.get("detalhes")
+      ].join("\n");
+
+      location.href =
+        "mailto:00brotherempresa@gmail.com?subject=" +
+        encodeURIComponent("Orçamento de site - " + d.get("nome")) +
+        "&body=" +
+        encodeURIComponent(body);
+
+    });
+  </script>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <div>
+        <strong>00Brother</strong>
+        <div class="small">Ideias que ganham forma na web.</div>
+      </div>
+
+      <div class="small">
+        <a href="mailto:00brotherempresa@gmail.com">
+          00brotherempresa@gmail.com
+        </a>
+
+        ·
+
+        <a href="https://wa.me/5543991391519">
+          WhatsApp (43) 99139-1519
+        </a>
+      </div>
+
+      <div class="small">
+        © 2026 00Brother. Todos os direitos reservados.
+      </div>
+
+    </div>
+
+  </footer>
+
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <!-- CARROSSEL AUTOMÁTICO -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const carousel = document.querySelector(".hero-carousel");
+      if (!carousel) return;
+
+      const slides = Array.from(
+        carousel.querySelectorAll(".hero-slide")
+      );
+
+      const dotsContainer = carousel.querySelector(".hero-dots");
+
+      let current = 0;
+      let timer;
+
+      slides.forEach((slide, index) => {
+
+        const dot = document.createElement("button");
+
+        dot.type = "button";
+        dot.className = "hero-dot";
+        dot.setAttribute("aria-label", "Mostrar banner " + (index + 1));
+
+        dot.addEventListener("click", () => {
+          showSlide(index);
+          startTimer();
+        });
+
+        dotsContainer.appendChild(dot);
+
+      });
+
+      const dots = Array.from(
+        dotsContainer.querySelectorAll(".hero-dot")
+      );
+
+      function showSlide(index) {
+
+        slides[current].classList.remove("active");
+        dots[current].classList.remove("active");
+
+        current = index;
+
+        slides[current].classList.add("active");
+        dots[current].classList.add("active");
+
+      }
+
+      function nextSlide() {
+        showSlide((current + 1) % slides.length);
+      }
+
+      function startTimer() {
+
+        clearInterval(timer);
+
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          timer = setInterval(nextSlide, 5000);
+        }
+
+      }
+
+      showSlide(0);
+      startTimer();
+
+      carousel.addEventListener("mouseenter", () => {
+        clearInterval(timer);
+      });
+
+      carousel.addEventListener("mouseleave", () => {
+        startTimer();
+      });
+
+    });
+  </script>
+
+  <script src="transitions.js"></script>
+
+</body>
+</html>

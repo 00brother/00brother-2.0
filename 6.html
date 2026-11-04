@@ -1,1 +1,490 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Conheça sites e projetos publicados pela 00Brother."><meta name="theme-color" content="#172838"><title>Sites entregues | 00Brother</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css"></head><body><header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html">00<span>Brother</span></a><nav class="nav" aria-label="Navegação principal"><a href="index.html"  class="">Início</a><a href="6.html" aria-current="page" class="">Sites entregues</a><a href="7.html"  class="">Portfólio</a><a href="8.html"  class="">Planos</a><a href="9.html"  class="nav-cta">Orçamento</a></nav></div></header><section class="hero"><div class="hero-inner"><span class="eyebrow">Trabalhos publicados</span><h1>Sites entregues.</h1><p>Uma seleção de projetos concluídos pela equipe 00Brother. Cada trabalho representa uma ideia transformada em presença digital.</p><div class="actions"><a class="btn btn-gold" href="7.html">Explorar portfólios</a><a class="btn btn-outline" href="9.html">Quero um projeto assim</a></div></div></section><main class="container"><div class="section-head"><h2>Projetos publicados</h2><p>Os projetos serão apresentados aqui à medida que forem adicionados pela equipe.</p></div><div class="project-grid" id="delivered-projects"></div></main><script src="projetos.js"></script><script>const delivered=projetos.filter(p=>p.entregue);const el=document.getElementById('delivered-projects');el.innerHTML=delivered.length?delivered.map(p=>projectCard(p)).join(''):'<div class="empty-state"><h3>Novos projetos em breve</h3><p>Estamos preparando esta vitrine com os sites já entregues pela equipe. Enquanto isso, conheça os portfólios individuais.</p><a class="project-link" href="7.html">Ver portfólios →</a></div>';</script><footer class="site-footer"><div class="footer-inner"><div><strong>00Brother</strong><div class="small">Ideias que ganham forma na web.</div></div><div class="small"><a href="mailto:00brotherempresa@gmail.com">00brotherempresa@gmail.com</a> · <a href="https://wa.me/5543991391519">WhatsApp (43) 99139-1519</a></div><div class="small">© 2026 00Brother. Todos os direitos reservados.</div></div></footer><div class="page-transition" aria-hidden="true"></div><script src="transitions.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Conheça sites e projetos publicados pela 00Brother.">
+  <meta name="theme-color" content="#172838">
+
+  <title>Sites entregues | 00Brother</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="site.css">
+
+  <style>
+    /* CARROSSEL */
+    .hero.hero-carousel {
+      --hero-accent: #d6b45b;
+      --hero-text: #ffffff;
+      --hero-muted: #e0e5eb;
+      --hero-button-text: #172838;
+
+      position: relative;
+      overflow: hidden;
+      color: var(--hero-text);
+      background: #102337;
+    }
+
+    /* MARCA TOTALMENTE BRANCA */
+    .brand,
+    .brand span {
+      color: #ffffff !important;
+    }
+
+    .hero-carousel .hero-slides {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      width: 100%;
+    }
+
+    .hero-carousel .hero-slide {
+      grid-area: 1 / 1;
+      position: relative;
+      isolation: isolate;
+
+      display: flex;
+      align-items: center;
+
+      min-height: 470px;
+      padding: 80px 24px;
+      box-sizing: border-box;
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(18px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s ease,
+        visibility .8s;
+
+      pointer-events: none;
+    }
+
+    /* FOTOS REAIS DOS BANNERS */
+    .hero-carousel .hero-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+
+      background-image: var(--hero-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      transform: scale(1.03);
+    }
+
+    /* SOBREPOSIÇÃO ESCURA */
+    .hero-carousel .hero-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      background: linear-gradient(
+        90deg,
+        rgba(5, 15, 27, .94) 0%,
+        rgba(5, 15, 27, .78) 48%,
+        rgba(5, 15, 27, .40) 100%
+      );
+    }
+
+    .hero-carousel .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .hero-carousel .hero-inner {
+      width: min(100%, 1100px);
+      margin: 0 auto;
+    }
+
+    .hero-carousel .eyebrow {
+      color: #d6b45b !important;
+    }
+
+    .hero-carousel h1 {
+      color: #ffffff !important;
+    }
+
+    .hero-carousel p {
+      color: #e0e5eb !important;
+    }
+
+    .hero-carousel .btn-gold {
+      background: #d6b45b !important;
+      color: #172838 !important;
+      border-color: #d6b45b !important;
+    }
+
+    .hero-carousel .btn-outline {
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+    }
+
+    /* INDICADORES */
+    .hero-carousel .hero-dots {
+      position: absolute;
+      bottom: 18px;
+      left: 0;
+      right: 0;
+      z-index: 2;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-carousel .hero-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+
+      border: 0;
+      border-radius: 20px;
+
+      background: rgba(255, 255, 255, .5);
+      cursor: pointer;
+
+      transition: all .35s ease;
+    }
+
+    .hero-carousel .hero-dot.active {
+      width: 30px;
+      background: #d6b45b;
+    }
+
+    .hero-carousel .hero-dot:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .hero-carousel .hero-slide {
+        min-height: 440px;
+        padding: 65px 20px;
+      }
+
+      .hero-carousel .hero-slide::after {
+        background: rgba(5, 15, 27, .82);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-carousel .hero-slide,
+      .hero-carousel .hero-dot {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="site-header">
+    <div class="nav-wrap">
+
+      <a class="brand" href="principal.html">
+        00<span>Brother</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="principal.html">Início</a>
+        <a href="6.html" aria-current="page">Sites entregues</a>
+        <a href="8.html">Planos</a>
+        <a href="9.html" class="nav-cta">Orçamento</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- CARROSSEL DE SITES ENTREGUES -->
+  <section class="hero hero-carousel">
+
+    <div class="hero-slides">
+
+      <!-- BANNER 1 -->
+      <article
+        class="hero-slide active"
+        style="--hero-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=85')">
+
+        <div class="hero-inner">
+
+          <span class="eyebrow">Trabalhos publicados · 00Brother</span>
+
+          <h1>
+            Sites entregues.
+          </h1>
+
+          <p>
+            Uma seleção de projetos concluídos pela equipe 00Brother.
+            Cada trabalho representa uma ideia transformada
+            em presença digital.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-gold" href="#delivered-projects">
+              Ver projetos publicados ↗
+            </a>
+
+            <a class="btn btn-outline" href="9.html">
+              Quero um projeto assim
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- BANNER 2 -->
+      <article
+        class="hero-slide"
+        style="--hero-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2000&q=85')">
+
+        <div class="hero-inner">
+
+          <span class="eyebrow">Tecnologia e desenvolvimento</span>
+
+          <h1>
+            Cada detalhe<br>
+            faz a diferença.
+          </h1>
+
+          <p>
+            Criamos experiências digitais pensando em organização,
+            desempenho, navegação e apresentação profissional
+            para cada negócio.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-gold" href="9.html">
+              Criar meu site ↗
+            </a>
+
+            <a class="btn btn-outline" href="8.html">
+              Conhecer nossos planos
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- BANNER 3 -->
+      <article
+        class="hero-slide"
+        style="--hero-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2000&q=85')">
+
+        <div class="hero-inner">
+
+          <span class="eyebrow">Seu negócio também pode estar aqui</span>
+
+          <h1>
+            Vamos publicar<br>
+            seu próximo projeto?
+          </h1>
+
+          <p>
+            Conte sua ideia para nossa equipe.
+            Vamos encontrar a solução digital ideal
+            para apresentar sua marca ao mundo.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-gold" href="9.html">
+              Solicitar orçamento ↗
+            </a>
+
+            <a class="btn btn-outline" href="principal.html#equipe">
+              Conhecer a equipe
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+    </div>
+
+    <div class="hero-dots" aria-label="Escolher banner"></div>
+
+  </section>
+
+  <!-- PROJETOS PUBLICADOS -->
+  <main class="container">
+
+    <div class="section-head">
+      <h2>Projetos publicados</h2>
+
+      <p>
+        Os projetos serão apresentados aqui à medida
+        que forem adicionados pela equipe.
+      </p>
+    </div>
+
+    <div class="project-grid" id="delivered-projects"></div>
+
+  </main>
+
+  <!-- PROJETOS -->
+  <script src="projetos.js"></script>
+
+  <script>
+    const delivered = projetos.filter(p => p.entregue);
+    const el = document.getElementById("delivered-projects");
+
+    el.innerHTML = delivered.length
+      ? delivered.map(p => projectCard(p)).join("")
+      : `
+        <div class="empty-state">
+          <h3>Novos projetos em breve</h3>
+
+          <p>
+            Estamos preparando esta vitrine com os sites
+            já entregues pela equipe.
+          </p>
+
+          <a class="project-link" href="9.html">
+            Quero meu site →
+          </a>
+        </div>
+      `;
+  </script>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <div>
+        <strong>00Brother</strong>
+
+        <div class="small">
+          Ideias que ganham forma na web.
+        </div>
+      </div>
+
+      <div class="small">
+        <a href="mailto:00brotherempresa@gmail.com">
+          00brotherempresa@gmail.com
+        </a>
+
+        ·
+
+        <a href="https://wa.me/5543991391519">
+          WhatsApp (43) 99139-1519
+        </a>
+      </div>
+
+      <div class="small">
+        © 2026 00Brother. Todos os direitos reservados.
+      </div>
+
+    </div>
+
+  </footer>
+
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <!-- CARROSSEL AUTOMÁTICO -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const carousel = document.querySelector(".hero-carousel");
+      if (!carousel) return;
+
+      const slides = Array.from(
+        carousel.querySelectorAll(".hero-slide")
+      );
+
+      const dotsContainer = carousel.querySelector(".hero-dots");
+
+      if (!slides.length || !dotsContainer) return;
+
+      let current = 0;
+      let timer;
+
+      slides.forEach((slide, index) => {
+
+        const dot = document.createElement("button");
+
+        dot.type = "button";
+        dot.className = "hero-dot";
+        dot.setAttribute("aria-label", "Mostrar banner " + (index + 1));
+
+        dot.addEventListener("click", () => {
+          showSlide(index);
+          startTimer();
+        });
+
+        dotsContainer.appendChild(dot);
+
+      });
+
+      const dots = Array.from(
+        dotsContainer.querySelectorAll(".hero-dot")
+      );
+
+      function showSlide(index) {
+
+        slides[current].classList.remove("active");
+        dots[current].classList.remove("active");
+        dots[current].setAttribute("aria-current", "false");
+
+        current = index;
+
+        slides[current].classList.add("active");
+        dots[current].classList.add("active");
+        dots[current].setAttribute("aria-current", "true");
+
+      }
+
+      function nextSlide() {
+        showSlide((current + 1) % slides.length);
+      }
+
+      function startTimer() {
+
+        clearInterval(timer);
+
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          timer = setInterval(nextSlide, 5000);
+        }
+
+      }
+
+      showSlide(0);
+      startTimer();
+
+      carousel.addEventListener("mouseenter", () => {
+        clearInterval(timer);
+      });
+
+      carousel.addEventListener("mouseleave", () => {
+        startTimer();
+      });
+
+      carousel.addEventListener("focusin", () => {
+        clearInterval(timer);
+      });
+
+      carousel.addEventListener("focusout", () => {
+        startTimer();
+      });
+
+    });
+  </script>
+
+  <script src="transitions.js"></script>
+
+</body>
+</html>
