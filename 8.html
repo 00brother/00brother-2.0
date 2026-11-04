@@ -1,8 +1,7 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Tabela de preços e serviços da 00Brother. Sites, identidade visual, mídia e manutenção.">
   <meta name="theme-color" content="#172838">
@@ -14,11 +13,33 @@
   <link rel="stylesheet" href="site.css">
 
   <style>
+    :root {
+      --navy: #172838;
+      --navy-light: #29465e;
+      --gold: #d6b45b;
+      --gold-dark: #98772c;
+      --white: #fff;
+      --gray: #64717d;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* GARANTE A LOGO BRANCA */
+    .brand,
+    .brand span,
+    .site-header .brand,
+    .site-header .brand span {
+      color: #fff !important;
+    }
+
+    /* BANNERS */
     .hero.hero-carousel {
       position: relative;
       overflow: hidden;
       color: #fff;
-      background: #102337;
+      background: var(--navy);
     }
 
     .hero-carousel .hero-slides {
@@ -73,16 +94,21 @@
     }
 
     .hero-carousel .eyebrow {
-      color: #d6b45b !important;
+      color: var(--gold) !important;
     }
 
-    .hero-carousel h1 { color: #fff; }
-    .hero-carousel p { color: #e0e5eb; }
+    .hero-carousel h1 {
+      color: #fff;
+    }
+
+    .hero-carousel p {
+      color: #e0e5eb;
+    }
 
     .hero-carousel .btn-gold {
-      background: #d6b45b;
-      color: #172838;
-      border-color: #d6b45b;
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
     }
 
     .hero-carousel .btn-outline {
@@ -115,9 +141,10 @@
 
     .hero-carousel .hero-dot.active {
       width: 30px;
-      background: #d6b45b;
+      background: var(--gold);
     }
 
+    /* PREÇOS */
     .price-intro {
       text-align: center;
       max-width: 760px;
@@ -129,8 +156,13 @@
       margin-bottom: 12px;
     }
 
-    .price-intro p { line-height: 1.8; }
-    .price-section { margin-bottom: 55px; }
+    .price-intro p {
+      line-height: 1.8;
+    }
+
+    .price-section {
+      margin-bottom: 55px;
+    }
 
     .price-section-title {
       margin-bottom: 22px;
@@ -140,7 +172,7 @@
 
     .price-section-title h2 {
       margin: 0;
-      color: #172838;
+      color: var(--navy);
       font-size: 25px;
     }
 
@@ -167,28 +199,32 @@
     }
 
     .price-card h3 {
-      color: #172838;
+      color: var(--navy);
       font-size: 19px;
       margin: 0 0 10px;
     }
 
     .price-card p {
-      color: #64717d;
+      color: var(--gray);
       font-size: 14px;
       line-height: 1.75;
       margin: 0;
     }
 
     .price-value {
-      color: #98772c;
+      color: var(--gold-dark);
       font-size: 27px;
       font-weight: 800;
       margin-top: 20px;
     }
 
-    .price-value.free { color: #25845b; }
+    .price-value.free {
+      color: #25845b;
+    }
 
-    .price-featured { border: 2px solid #c9a84c; }
+    .price-featured {
+      border: 2px solid #c9a84c;
+    }
 
     .price-tag {
       display: inline-block;
@@ -200,6 +236,31 @@
       font-size: 11px;
       font-weight: 700;
       margin-bottom: 14px;
+    }
+
+    .preview-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 22px;
+      padding: 12px 15px;
+      border: 1px solid #c9a84c;
+      border-radius: 9px;
+      background: #fff;
+      color: var(--navy);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .preview-button:hover {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
     }
 
     .price-notice {
@@ -214,7 +275,7 @@
     }
 
     .price-cta {
-      background: #172838;
+      background: var(--navy);
       border-radius: 18px;
       color: white;
       text-align: center;
@@ -225,6 +286,7 @@
     .price-cta h2 {
       margin-top: 0;
       font-size: clamp(24px, 4vw, 34px);
+      color: #fff;
     }
 
     .price-cta p {
@@ -238,263 +300,1296 @@
       text-decoration: none;
     }
 
-    @media(max-width: 600px) {
+    /* JANELA DE DEMONSTRAÇÃO */
+    .demo-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(5,12,20,.78);
+      backdrop-filter: blur(7px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .25s, visibility .25s;
+    }
+
+    .demo-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .demo-modal {
+      position: relative;
+      width: min(100%, 900px);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.3);
+      transform: translateY(20px) scale(.98);
+      transition: transform .3s;
+    }
+
+    .demo-overlay.open .demo-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .demo-header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 18px 23px;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .demo-header h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 19px;
+    }
+
+    .demo-close {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .demo-close:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .demo-content {
+      padding: 25px;
+    }
+
+    .demo-description {
+      margin: 0 0 20px;
+      color: #65717c;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .demo-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--gold-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* MODELOS DE SITE */
+    .mock-site {
+      overflow: hidden;
+      border: 1px solid #dfe3e7;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 8px 25px rgba(23,40,56,.08);
+    }
+
+    .mock-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 20px;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .mock-logo {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      white-space: nowrap;
+    }
+
+    .mock-logo span {
+      color: var(--gold);
+    }
+
+    .mock-links {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: #fff;
+      font-size: 10px;
+    }
+
+    .mock-links button {
+      padding: 5px 0;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .mock-links button:hover {
+      color: var(--gold);
+    }
+
+    .mock-hero {
+      padding: 40px 25px;
+      background: linear-gradient(120deg,#172838,#31516a);
+      color: #fff;
+    }
+
+    .mock-hero h3 {
+      max-width: 450px;
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: clamp(22px,4vw,32px);
+      line-height: 1.2;
+    }
+
+    .mock-hero p {
+      max-width: 420px;
+      margin: 0 0 18px;
+      color: #e0e7ed;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .mock-cta {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .mock-sections {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .mock-section {
+      padding: 16px;
+      border: 1px solid #e6e9ec;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .mock-section strong {
+      display: block;
+      color: var(--navy);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .mock-section small {
+      color: #71808b;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    /* LOJA INTERATIVA */
+    .store-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 17px;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .store-nav .mock-links {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .store-cart {
+      color: var(--gold) !important;
+      font-weight: 800 !important;
+    }
+
+    .mock-products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 13px;
+      padding: 18px;
+    }
+
+    .mock-product {
+      overflow: hidden;
+      border: 1px solid #e5e8eb;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .mock-product-image {
+      display: grid;
+      place-items: center;
+      min-height: 115px;
+      background: #f1f4f7;
+      font-size: 42px;
+    }
+
+    .mock-product-info {
+      padding: 12px;
+    }
+
+    .mock-product-info strong {
+      display: block;
+      color: var(--navy);
+      font-size: 12px;
+    }
+
+    .mock-product-info small {
+      display: block;
+      color: var(--gold-dark);
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 5px;
+    }
+
+    .store-message {
+      padding: 10px 16px;
+      color: #25845b;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .demo-note {
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #f1f4f7;
+      color: #64717d;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* OUTRAS DEMONSTRAÇÕES */
+    .demo-panel {
+      padding: 25px;
+      border: 1px solid #e3e7eb;
+      border-radius: 12px;
+      background: #f8fafb;
+    }
+
+    .demo-panel h3 {
+      color: var(--navy);
+      margin: 0 0 10px;
+    }
+
+    .demo-panel p {
+      color: #64717d;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .demo-logo {
+      display: grid;
+      place-items: center;
+      min-height: 190px;
+      border-radius: 12px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 38px;
+      font-weight: 800;
+    }
+
+    .demo-logo span {
+      color: var(--gold);
+    }
+
+    .social-post {
+      max-width: 380px;
+      margin: auto;
+      padding: 22px;
+      border-radius: 14px;
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+    }
+
+    .social-post h3 {
+      color: var(--gold);
+      font-size: 25px;
+    }
+
+    .social-post p {
+      color: #fff;
+    }
+
+    .map-demo {
+      display: grid;
+      place-items: center;
+      min-height: 220px;
+      border-radius: 10px;
+      background:
+        linear-gradient(35deg, transparent 45%, #d4dfd2 46%, #d4dfd2 54%, transparent 55%),
+        linear-gradient(120deg, #e6eadf, #d9e4ed);
+      color: var(--navy);
+      text-align: center;
+    }
+
+    .map-pin {
+      font-size: 38px;
+    }
+
+    .banner-demo {
+      display: grid;
+      place-items: center;
+      min-height: 200px;
+      padding: 20px;
+      border-radius: 10px;
+      background: linear-gradient(120deg,#172838,#385c75);
+      color: #fff;
+      text-align: center;
+    }
+
+    .banner-demo h3 {
+      color: var(--gold);
+      font-size: 27px;
+    }
+
+    .opening-demo {
+      display: grid;
+      place-items: center;
+      min-height: 250px;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--navy);
+      text-align: center;
+    }
+
+    .opening-demo strong {
+      font-size: 36px;
+    }
+
+    .opening-demo span {
+      color: var(--gold-dark);
+    }
+
+    .video-demo {
+      display: grid;
+      place-items: center;
+      min-height: 230px;
+      border-radius: 10px;
+      background: linear-gradient(135deg,#172838,#405f77);
+      color: #fff;
+      text-align: center;
+    }
+
+    .video-play {
+      display: grid;
+      place-items: center;
+      width: 65px;
+      height: 65px;
+      margin: auto auto 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 25px;
+    }
+
+    .maintenance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .maintenance-box {
+      padding: 17px;
+      border-radius: 9px;
+      background: #f1f4f7;
+      color: #64717d;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .maintenance-box.after {
+      background: #eaf5ee;
+    }
+
+    .maintenance-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+
+    .maintenance-box p {
+      margin: 4px 0;
+    }
+
+    @media (max-width: 650px) {
       .hero-carousel .hero-slide {
-        min-height: 440px;
+        min-height: 430px;
         padding: 65px 20px;
       }
 
-      .hero-carousel .hero-slide::after {
-        background: rgba(5,15,27,.82);
+      .price-grid {
+        grid-template-columns: 1fr;
       }
 
-      .price-grid { grid-template-columns: 1fr; }
-      .price-card { padding: 22px; }
-      .price-section-title h2 { font-size: 21px; }
-      .price-cta { padding: 32px 18px; }
-    }
+      .demo-overlay {
+        padding: 8px;
+      }
 
-    @media(prefers-reduced-motion: reduce) {
-      .hero-carousel .hero-slide,
-      .hero-carousel .hero-dot { transition: none; }
+      .demo-modal {
+        max-height: 94vh;
+        border-radius: 14px;
+      }
+
+      .demo-content {
+        padding: 15px;
+      }
+
+      .demo-header {
+        padding: 14px 16px;
+      }
+
+      .mock-nav,
+      .store-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .mock-links,
+      .store-nav .mock-links {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px 13px;
+      }
+
+      .mock-sections {
+        grid-template-columns: 1fr;
+      }
+
+      .mock-products {
+        grid-template-columns: 1fr;
+      }
+
+      .mock-product {
+        display: grid;
+        grid-template-columns: 105px 1fr;
+      }
+
+      .mock-product-image {
+        min-height: 110px;
+      }
+
+      .maintenance-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
 
+<!-- CABEÇALHO -->
 <header class="site-header">
   <div class="nav-wrap">
-    <a class="brand" href="principal.html">00<span>Brother</span></a>
+
+    <a class="brand" href="principal.html">
+      00<span>Brother</span>
+    </a>
+
     <nav class="nav" aria-label="Navegação principal">
       <a href="principal.html">Início</a>
       <a href="6.html">Sites entregues</a>
       <a href="8.html" aria-current="page">Planos</a>
       <a href="9.html" class="nav-cta">Orçamento</a>
     </nav>
+
   </div>
 </header>
 
-<section class="hero hero-carousel">
-  <div class="hero-slides">
+  <!-- BANNERS -->
+  <section class="hero hero-carousel">
+    <div class="hero-slides">
 
-    <article class="hero-slide active"
-      style="--hero-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=2000&q=85')">
-      <div class="hero-inner">
-        <span class="eyebrow">Investimento transparente</span>
-        <h1>Nossos serviços e valores.</h1>
-        <p>Conheça nossas soluções digitais com preços claros e acessíveis para seu negócio.</p>
-        <div class="actions">
-          <a class="btn btn-gold" href="#precos">Ver tabela de preços ↗</a>
-          <a class="btn btn-outline" href="9.html">Solicitar orçamento</a>
+      <article class="hero-slide active"
+        style="--hero-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=85')">
+        <div class="hero-inner">
+          <span class="eyebrow">INVESTIMENTO DIGITAL</span>
+          <h1>Seu próximo site começa aqui.</h1>
+          <p>Conheça nossos serviços, escolha o que sua empresa precisa e leve sua presença digital para outro nível.</p>
+          <a href="#precos" class="btn btn-gold">Ver preços</a>
         </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="hero-slide"
-      style="--hero-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=85')">
-      <div class="hero-inner">
-        <span class="eyebrow">Sua empresa no digital</span>
-        <h1>Um site para valorizar sua marca.</h1>
-        <p>Apresente seus produtos e serviços com uma presença online profissional.</p>
-        <div class="actions">
-          <a class="btn btn-gold" href="#precos">Conhecer os planos ↗</a>
-          <a class="btn btn-outline" href="6.html">Ver sites entregues</a>
+      <article class="hero-slide"
+        style="--hero-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=85')">
+        <div class="hero-inner">
+          <span class="eyebrow">SOLUÇÕES PARA SUA EMPRESA</span>
+          <h1>Mais profissionalismo para sua marca.</h1>
+          <p>Sites, identidade visual, divulgação e melhorias para apresentar seu negócio na internet.</p>
+          <a href="9.html" class="btn btn-gold">Solicitar orçamento</a>
         </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="hero-slide"
-      style="--hero-image:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2000&q=85')">
-      <div class="hero-inner">
-        <span class="eyebrow">Vamos tirar sua ideia do papel</span>
-        <h1>Seu próximo projeto começa aqui.</h1>
-        <p>Conte para nossa equipe o que você precisa e encontre a solução ideal.</p>
-        <div class="actions">
-          <a class="btn btn-gold" href="9.html">Pedir orçamento ↗</a>
-          <a class="btn btn-outline" href="principal.html#equipe">Conhecer a equipe</a>
+      <article class="hero-slide"
+        style="--hero-image:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1800&q=85')">
+        <div class="hero-inner">
+          <span class="eyebrow">00BROTHER</span>
+          <h1>Uma ideia pode virar seu próximo projeto.</h1>
+          <p>Veja as demonstrações dos nossos serviços e descubra o que podemos desenvolver para você.</p>
+          <a href="#precos" class="btn btn-gold">Explorar serviços</a>
         </div>
+      </article>
+
+    </div>
+
+    <div class="hero-dots">
+      <button class="hero-dot active" aria-label="Banner 1"></button>
+      <button class="hero-dot" aria-label="Banner 2"></button>
+      <button class="hero-dot" aria-label="Banner 3"></button>
+    </div>
+  </section>
+
+  <!-- PREÇOS -->
+  <main class="section" id="precos">
+    <div class="container">
+
+      <div class="price-intro">
+        <span class="eyebrow">NOSSOS SERVIÇOS</span>
+        <h2>Preços e soluções</h2>
+        <p>Confira nossos serviços e valores. Você também pode clicar em “Ver demonstração” para visualizar um exemplo de cada serviço.</p>
       </div>
-    </article>
 
+      <!-- 01 CRIAÇÃO DE SITES -->
+      <section class="price-section">
+        <div class="price-section-title">
+          <h2>01. Criação de sites</h2>
+        </div>
+
+        <div class="price-grid">
+
+          <article class="price-card">
+            <span class="price-tag">PÁGINA ÚNICA</span>
+            <h3>One Page</h3>
+            <p>Formato de página única que possibilita a apresentação da marca e do serviço, servindo como uma ponte entre você e o cliente.</p>
+            <div class="price-value">R$ 100,00</div>
+            <button class="preview-button" data-demo="onepage">Ver demonstração ↗</button>
+          </article>
+
+          <article class="price-card price-featured">
+            <span class="price-tag">SITE COMPLETO</span>
+            <h3>Web Page</h3>
+            <p>Formato de site completo que traz tudo o que você precisa, desde produtos até formas de pagamento.</p>
+            <div class="price-value">R$ 400,00</div>
+            <button class="preview-button" data-demo="webpage">Ver demonstração ↗</button>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 02 ADICIONAIS -->
+      <section class="price-section">
+        <div class="price-section-title">
+          <h2>02. Adicionais e melhoria de desempenho</h2>
+        </div>
+
+        <div class="price-grid">
+
+          <article class="price-card">
+            <h3>Criação de Logo</h3>
+            <p>Criação de uma identidade visual para representar sua empresa.</p>
+            <div class="price-value">R$ 25,00</div>
+            <button class="preview-button" data-demo="logo">Ver demonstração ↗</button>
+          </article>
+
+          <article class="price-card">
+            <h3>Postagem no Google</h3>
+            <p>Serviço de postagem para divulgar sua empresa no Google.</p>
+            <div class="price-value">R$ 20,00</div>
+            <button class="preview-button" data-demo="google">Ver demonstração ↗</button>
+          </article>
+
+          <article class="price-card">
+            <h3>Postagem no Google Maps</h3>
+            <p>Divulgação da sua empresa no Google Maps.</p>
+            <div class="price-value">R$ 30,00</div>
+            <button class="preview-button" data-demo="maps">Ver demonstração ↗</button>
+          </article>
+
+          <article class="price-card">
+            <h3>Criação de Gmail empresarial</h3>
+            <p>Criação de uma conta Gmail para sua empresa, se necessário.</p>
+            <div class="price-value free">Grátis</div>
+            <button class="preview-button" data-demo="gmail">Ver demonstração ↗</button>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 03 ESTÉTICA E MÍDIA -->
+      <section class="price-section">
+        <div class="price-section-title">
+          <h2>03. Estética e mídia</h2>
+        </div>
+
+        <div class="price-grid">
+
+          <article class="price-card">
+            <h3>Banners rotativos</h3>
+            <p>Imagens que ficam alternando na apresentação do site.</p>
+            <div class="price-value">R$ 5,00</div>
+            <button class="preview-button" data-demo="banners">Ver demonstração ↗</button>
+          </article>
+
+          <article class="price-card">
+            <h3>Tela de abertura</h3>
+            <p>Tela de abertura personalizada com a logo da sua empresa.</p>
+            <div class="price-value">R$ 10,00</div>
+            <button class="preview-button" data-demo="opening">Ver demonstração ↗</button>
+          </article>
+
+          <article class="price-card">
+            <h3>Adição de vídeo</h3>
+            <p>Adição de um vídeo de até 1 minuto ao site.</p>
+            <div class="price-value">R$ 10,00</div>
+            <button class="preview-button" data-demo="video">Ver demonstração ↗</button>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 04 MANUTENÇÃO -->
+      <section class="price-section">
+        <div class="price-section-title">
+          <h2>04. Manutenção</h2>
+        </div>
+
+        <div class="price-grid">
+
+          <article class="price-card">
+            <h3>Atualização de Site</h3>
+            <p>Serviço de atualização e manutenção de conteúdo. Válido apenas para sites desenvolvidos pela 00Brother.</p>
+            <div class="price-value">R$ 50,00</div>
+            <button class="preview-button" data-demo="maintenance">Ver demonstração ↗</button>
+          </article>
+
+        </div>
+      </section>
+
+      <div class="price-notice">
+        <strong>Observação:</strong> os exemplos apresentados nas demonstrações são ilustrativos. Os projetos finais podem ser personalizados de acordo com a identidade e as necessidades de cada empresa.
+      </div>
+
+      <section class="price-cta">
+        <h2>Vamos tirar seu projeto do papel?</h2>
+        <p>Entre em contato com a 00Brother e solicite seu orçamento.</p>
+        <a href="9.html" class="btn btn-gold">Solicitar orçamento ↗</a>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- JANELA DE DEMONSTRAÇÃO -->
+  <div class="demo-overlay" id="demoOverlay" aria-hidden="true">
+    <div class="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demoTitle">
+
+      <div class="demo-header">
+        <h2 id="demoTitle">Demonstração</h2>
+        <button class="demo-close" type="button" aria-label="Fechar">&times;</button>
+      </div>
+
+      <div class="demo-content" id="demoContent"></div>
+
+    </div>
   </div>
-  <div class="hero-dots" aria-label="Escolher banner"></div>
-</section>
 
-<main class="container" id="precos">
+  <script>
+    /* CARROSSEL DOS BANNERS */
+    (() => {
+      const slides = document.querySelectorAll(".hero-slide");
+      const dots = document.querySelectorAll(".hero-dot");
 
-  <div class="price-intro">
-    <span class="eyebrow" style="color:#927321">Tabela oficial</span>
-    <h2>Encontre a solução ideal para você.</h2>
-    <p>Confira nossos serviços e valores. Você pode contratar um site completo ou adicionar serviços para melhorar a apresentação e o desempenho da sua empresa.</p>
-  </div>
+      if (!slides.length || !dots.length) return;
 
-  <section class="price-section">
-    <div class="price-section-title"><h2>01. Criação de sites</h2></div>
-    <div class="price-grid">
-      <article class="price-card">
-        <span class="price-tag">Página única</span>
-        <h3>One Page</h3>
-        <p>Formato de página única que possibilita a apresentação da marca e do serviço, servindo como uma ponte entre você e o cliente.</p>
-        <div class="price-value">R$ 100,00</div>
-      </article>
+      let atual = 0;
+      let intervalo;
 
-      <article class="price-card price-featured">
-        <span class="price-tag">Site completo</span>
-        <h3>Web Page</h3>
-        <p>Formato de site completo que traz tudo o que você precisa, desde produtos até formas de pagamento.</p>
-        <div class="price-value">R$ 400,00</div>
-      </article>
-    </div>
-  </section>
+      function mostrarSlide(index) {
+        atual = index;
 
-  <section class="price-section">
-    <div class="price-section-title"><h2>02. Adicionais e melhoria de desempenho</h2></div>
-    <div class="price-grid">
-      <article class="price-card">
-        <h3>Criação de Logo</h3>
-        <p>Criação de uma identidade visual para representar sua empresa.</p>
-        <div class="price-value">R$ 25,00</div>
-      </article>
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === atual);
+        });
 
-      <article class="price-card">
-        <h3>Postagem no Google</h3>
-        <p>Serviço de postagem para divulgar sua empresa no Google.</p>
-        <div class="price-value">R$ 20,00</div>
-      </article>
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === atual);
+        });
+      }
 
-      <article class="price-card">
-        <h3>Postagem no Google Maps</h3>
-        <p>Divulgação da sua empresa no Google Maps.</p>
-        <div class="price-value">R$ 30,00</div>
-      </article>
+      function iniciarCarrossel() {
+        clearInterval(intervalo);
 
-      <article class="price-card">
-        <h3>Criação de Gmail empresarial</h3>
-        <p>Criação de uma conta Gmail para sua empresa, se necessário.</p>
-        <div class="price-value free">Grátis</div>
-      </article>
-    </div>
-  </section>
+        intervalo = setInterval(() => {
+          mostrarSlide((atual + 1) % slides.length);
+        }, 5000);
+      }
 
-  <section class="price-section">
-    <div class="price-section-title"><h2>03. Estética e mídia</h2></div>
-    <div class="price-grid">
-      <article class="price-card">
-        <h3>Banners rotativos</h3>
-        <p>Imagens que ficam alternando na apresentação do site.</p>
-        <div class="price-value">R$ 5,00</div>
-      </article>
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          mostrarSlide(index);
+          iniciarCarrossel();
+        });
+      });
 
-      <article class="price-card">
-        <h3>Tela de abertura</h3>
-        <p>Tela de abertura personalizada com a logo da sua empresa.</p>
-        <div class="price-value">R$ 10,00</div>
-      </article>
+      iniciarCarrossel();
+    })();
 
-      <article class="price-card">
-        <h3>Adição de vídeo</h3>
-        <p>Adição de um vídeo de até 1 minuto ao site.</p>
-        <div class="price-value">R$ 10,00</div>
-      </article>
-    </div>
-  </section>
 
-  <section class="price-section">
-    <div class="price-section-title"><h2>04. Manutenção</h2></div>
-    <div class="price-grid">
-      <article class="price-card">
-        <h3>Atualização de Site</h3>
-        <p>Serviço de atualização e manutenção de conteúdo. Válido apenas para sites desenvolvidos pela 00Brother.</p>
-        <div class="price-value">R$ 50,00</div>
-      </article>
-    </div>
+    /* ELEMENTOS DA JANELA */
+    const overlay = document.getElementById("demoOverlay");
+    const title = document.getElementById("demoTitle");
+    const content = document.getElementById("demoContent");
+    const closeButton = overlay.querySelector(".demo-close");
 
-    <div class="price-notice">
-      <strong>Importante:</strong> o serviço de atualização de site é válido exclusivamente para páginas desenvolvidas pela 00Brother.
-    </div>
-  </section>
 
-  <section class="price-cta">
-    <h2>Gostou de algum serviço?</h2>
-    <p>Entre em contato com nossa equipe e conte o que você precisa. Vamos conversar sobre seu projeto!</p>
-    <a class="btn btn-gold"
-      href="https://wa.me/5543991391519?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20os%20servi%C3%A7os%20e%20valores%20da%2000Brother."
-      target="_blank" rel="noopener">
-      Conversar pelo WhatsApp ↗
-    </a>
-  </section>
+    /* DEMONSTRAÇÕES DOS SERVIÇOS */
+    const demos = {
 
-</main>
+      onepage: {
+        title: "Demonstração — One Page",
+        description: "Exemplo de um site de página única para apresentar uma empresa, seus serviços e formas de contato.",
+        html: `
+          <div class="mock-site">
+            <div class="mock-nav">
+              <div class="mock-logo">MINHA<span>MARCA</span></div>
+              <div class="mock-links">
+                <span>Início</span>
+                <span>Serviços</span>
+                <span>Contato</span>
+              </div>
+            </div>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div>
-      <strong>00Brother</strong>
-      <div class="small">Ideias que ganham forma na web.</div>
-    </div>
-    <div class="small">
-      <a href="mailto:00brotherempresa@gmail.com">00brotherempresa@gmail.com</a>
-      ·
-      <a href="https://wa.me/5543991391519">WhatsApp (43) 99139-1519</a>
-    </div>
-    <div class="small">© 2026 00Brother. Todos os direitos reservados.</div>
-  </div>
-</footer>
+            <div class="mock-hero">
+              <span class="demo-label">SEJA BEM-VINDO</span>
+              <h3>Seu negócio merece destaque.</h3>
+              <p>Apresente sua empresa, mostre seus serviços e facilite o contato com seus clientes.</p>
+              <button class="mock-cta">FALE CONOSCO</button>
+            </div>
 
-<div class="page-transition" aria-hidden="true"></div>
-<script src="transitions.js"></script>
+            <div class="mock-sections">
+              <div class="mock-section">
+                <strong>Sobre nós</strong>
+                <small>Conheça nossa empresa.</small>
+              </div>
+              <div class="mock-section">
+                <strong>Serviços</strong>
+                <small>Veja o que oferecemos.</small>
+              </div>
+              <div class="mock-section">
+                <strong>Contato</strong>
+                <small>Fale com nossa equipe.</small>
+              </div>
+            </div>
+          </div>
+        `
+      },
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const carousel = document.querySelector(".hero-carousel");
-  if (!carousel) return;
+      webpage: {
+        title: "Demonstração — Web Page",
+        description: "Explore uma loja virtual demonstrativa. Navegue pelas páginas, adicione produtos ao carrinho e teste a finalização da compra.",
+        html: `
+          <div class="mock-site" id="lojaDemo">
 
-  const slides = Array.from(carousel.querySelectorAll(".hero-slide"));
-  const dotsContainer = carousel.querySelector(".hero-dots");
-  let current = 0;
-  let timer;
+            <div class="store-nav">
+              <div class="mock-logo">MINHA<span>LOJA</span></div>
 
-  slides.forEach((slide, index) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "hero-dot";
-    dot.setAttribute("aria-label", "Mostrar banner " + (index + 1));
-    dot.addEventListener("click", () => {
-      showSlide(index);
-      startTimer();
-    });
-    dotsContainer.appendChild(dot);
-  });
+              <div class="mock-links">
+                <button data-page="inicio">Início</button>
+                <button data-page="produtos">Produtos</button>
+                <button data-page="sobre">Sobre</button>
+                <button data-page="contato">Contato</button>
+                <button class="store-cart" data-page="carrinho">
+                  🛒 Carrinho (<span id="cartCount">0</span>)
+                </button>
+              </div>
+            </div>
 
-  const dots = Array.from(dotsContainer.querySelectorAll(".hero-dot"));
+            <div id="lojaConteudo"></div>
 
-  function showSlide(index) {
-    slides[current].classList.remove("active");
-    dots[current].classList.remove("active");
-    current = index;
-    slides[current].classList.add("active");
-    dots[current].classList.add("active");
-  }
+          </div>
 
-  function nextSlide() {
-    showSlide((current + 1) % slides.length);
-  }
+          <p class="demo-note">
+            Esta é uma loja fictícia para demonstração. Os produtos, valores e dados são exemplos. Nenhuma compra ou pagamento real será realizado.
+          </p>
+        `
+      },
 
-  function startTimer() {
-    clearInterval(timer);
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      timer = setInterval(nextSlide, 5000);
+      logo: {
+        title: "Demonstração — Criação de Logo",
+        description: "Exemplo ilustrativo de uma identidade visual simples, com nome, símbolo e cores que representam uma marca.",
+        html: `
+          <div class="demo-logo">
+            00<span>BR</span>
+          </div>
+          <div class="demo-panel" style="margin-top:15px">
+            <h3>Identidade visual</h3>
+            <p>Uma logo ajuda sua empresa a ser reconhecida e a transmitir uma imagem profissional.</p>
+            <p><strong>Cores de exemplo:</strong> azul-marinho, dourado e branco.</p>
+          </div>
+        `
+      },
+
+      google: {
+        title: "Demonstração — Postagem no Google",
+        description: "Exemplo de uma publicação de divulgação que pode apresentar novidades, ofertas e informações da empresa.",
+        html: `
+          <div class="social-post">
+            <span class="demo-label">PUBLICAÇÃO DA EMPRESA</span>
+            <h3>OFERTA ESPECIAL!</h3>
+            <p>Conheça nossos produtos e aproveite nossas novidades.</p>
+            <div style="padding:12px;background:#fff;color:#172838;border-radius:7px;font-size:12px;font-weight:700">
+              CONHEÇA NOSSA EMPRESA
+            </div>
+          </div>
+          <p class="demo-note">Exemplo visual de uma publicação. A postagem real depende das informações e imagens fornecidas pela empresa.</p>
+        `
+      },
+
+      maps: {
+        title: "Demonstração — Google Maps",
+        description: "Exemplo visual de como a localização de uma empresa pode aparecer em um mapa.",
+        html: `
+          <div class="map-demo">
+            <div>
+              <div class="map-pin">📍</div>
+              <strong>Sua empresa aqui</strong>
+              <p style="font-size:11px">Endereço e localização da empresa</p>
+            </div>
+          </div>
+          <div class="demo-panel" style="margin-top:15px">
+            <h3>Encontre nossa empresa</h3>
+            <p>O cadastro e a divulgação no Google Maps ajudam clientes a localizar o estabelecimento e consultar informações de endereço.</p>
+          </div>
+        `
+      },
+
+      gmail: {
+        title: "Demonstração — Gmail empresarial",
+        description: "Exemplo de como pode ficar a apresentação de um endereço de e-mail destinado ao atendimento da empresa.",
+        html: `
+          <div class="demo-panel">
+            <span class="demo-label">EXEMPLO DE E-MAIL</span>
+            <h3>Minha Empresa</h3>
+            <div style="padding:16px;background:#fff;border:1px solid #e1e5e8;border-radius:8px;color:#172838;font-size:14px">
+              ✉ contato.minhaempresa@gmail.com
+            </div>
+            <p>Um endereço de e-mail dedicado ajuda a organizar o contato com os clientes.</p>
+          </div>
+        `
+      },
+
+      banners: {
+        title: "Demonstração — Banners rotativos",
+        description: "Exemplo de banners que alternam automaticamente para destacar diferentes mensagens no site.",
+        html: `
+          <div class="banner-demo">
+            <span class="demo-label">BANNER DE EXEMPLO</span>
+            <h3>Conheça nossos produtos!</h3>
+            <p style="color:#fff;font-size:12px">Uma apresentação visual para destacar sua empresa.</p>
+          </div>
+          <p class="demo-note">Os banners podem apresentar promoções, produtos, serviços ou informações importantes.</p>
+        `
+      },
+
+      opening: {
+        title: "Demonstração — Tela de abertura",
+        description: "Exemplo de uma tela inicial personalizada com a identidade visual da empresa antes de acessar o site.",
+        html: `
+          <div class="opening-demo">
+            <div>
+              <span class="demo-label">BEM-VINDO À</span>
+              <strong>MINHA<span>MARCA</span></strong>
+              <p style="font-size:12px;color:#64717d">Sua experiência começa aqui.</p>
+              <div class="mock-cta">ENTRAR NO SITE</div>
+            </div>
+          </div>
+        `
+      },
+
+      video: {
+        title: "Demonstração — Adição de vídeo",
+        description: "Exemplo de como um vídeo pode ser apresentado dentro de uma página do site.",
+        html: `
+          <div class="video-demo">
+            <div>
+              <div class="video-play">▶</div>
+              <strong>Vídeo da sua empresa</strong>
+              <p style="font-size:11px;color:#e0e7ed">Apresentação de até 1 minuto</p>
+            </div>
+          </div>
+          <p class="demo-note">A demonstração é ilustrativa. O vídeo real será inserido conforme o material fornecido pelo cliente.</p>
+        `
+      },
+
+      maintenance: {
+        title: "Demonstração — Atualização de Site",
+        description: "Exemplo de informações antigas sendo substituídas por informações atualizadas.",
+        html: `
+          <div class="maintenance-grid">
+            <div class="maintenance-box">
+              <strong>ANTES</strong>
+              <p>• Promoção antiga</p>
+              <p>• Imagem antiga</p>
+              <p>• Horário incorreto</p>
+              <p>• Informações desatualizadas</p>
+            </div>
+
+            <div class="maintenance-box after">
+              <strong>DEPOIS</strong>
+              <p>✓ Nova promoção</p>
+              <p>✓ Imagem atualizada</p>
+              <p>✓ Horário corrigido</p>
+              <p>✓ Informações atualizadas</p>
+            </div>
+          </div>
+
+          <p class="demo-note">O serviço de atualização é válido apenas para sites desenvolvidos pela 00Brother.</p>
+        `
+      }
+
+    };
+
+
+    /* ABRIR DEMONSTRAÇÃO */
+    function openDemo(key) {
+      const demo = demos[key];
+
+      if (!demo) return;
+
+      title.textContent = demo.title;
+
+      content.innerHTML = `
+        <p class="demo-description">${demo.description}</p>
+        ${demo.html}
+      `;
+
+      overlay.classList.add("open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      closeButton.focus();
+
+      if (key === "webpage") {
+        iniciarLojaDemo();
+      }
     }
-  }
 
-  showSlide(0);
-  startTimer();
 
-  carousel.addEventListener("mouseenter", () => clearInterval(timer));
-  carousel.addEventListener("mouseleave", startTimer);
-});
-</script>
+    /* LOJA VIRTUAL INTERATIVA */
+    function iniciarLojaDemo() {
+      const loja = document.getElementById("lojaDemo");
+      const conteudo = document.getElementById("lojaConteudo");
+
+      if (!loja || !conteudo) return;
+
+      let carrinho = [];
+
+      const produtos = [
+        { nome: "Fone Premium", preco: 89.90, emoji: "🎧" },
+        { nome: "Relógio Especial", preco: 59.90, emoji: "⌚" },
+        { nome: "Mochila Exclusiva", preco: 119.90, emoji: "🎒" }
+      ];
+
+      function dinheiro(valor) {
+        return valor.toFixed(2).replace(".", ",");
+      }
+
+      function atualizarCarrinho() {
+        const contador = document.getElementById("cartCount");
+
+        if (contador) {
+          contador.textContent = carrinho.length;
+        }
+      }
+
+      function abrirPagina(pagina) {
+
+        if (pagina === "inicio") {
+          conteudo.innerHTML = `
+            <div class="mock-hero">
+              <span class="demo-label">BEM-VINDO À NOSSA LOJA</span>
+              <h3>Encontre tudo o que você procura!</h3>
+              <p>Produtos de qualidade e uma experiência de compra simples e prática.</p>
+              <button class="mock-cta" data-page="produtos">VER PRODUTOS</button>
+            </div>
+
+            <div class="mock-sections">
+              <div class="mock-section">
+                <strong>Qualidade</strong>
+                <small>Produtos selecionados.</small>
+              </div>
+              <div class="mock-section">
+                <strong>Praticidade</strong>
+                <small>Compre com facilidade.</small>
+              </div>
+              <div class="mock-section">
+                <strong>Atendimento</strong>
+                <small>Conte com nossa equipe.</small>
+              </div>
+            </div>
+          `;
+        }
+
+        else if (pagina === "produtos") {
+          conteudo.innerHTML = `
+            <div style="padding:20px">
+              <span class="demo-label">NOSSA VITRINE</span>
+              <h3 style="color:#172838">Nossos produtos</h3>
+              <p style="font-size:12px;color:#71808b">Escolha um produto para adicionar ao carrinho.</p>
+
+              <div class="mock-products">
+                ${produtos.map((produto, index) => `
+                  <div class="mock-product">
+                    <div class="mock-product-image">${produto.emoji}</div>
+                    <div class="mock-product-info">
+                      <strong>${produto.nome}</strong>
+                      <small>R$ ${dinheiro(produto.preco)}</small>
+                      <button class="mock-cta" style="margin-top:9px;width:100%"
+                        data-add="${index}">ADICIONAR</button>
+                    </div>
+                  </div>
+                `).join("")}
+              </div>
+
+              <div id="storeMessage" class="store-message"></div>
+            </div>
+          `;
+        }
+
+        else if (pagina === "sobre") {
+          conteudo.innerHTML = `
+            <div style="padding:30px 22px">
+              <span class="demo-label">CONHEÇA A EMPRESA</span>
+              <h3 style="color:#172838">Sobre nossa loja</h3>
+              <p style="color:#64717d;font-size:13px;line-height:1.8">
+                Somos uma empresa dedicada a oferecer produtos e atendimento de qualidade.
+                Nosso objetivo é proporcionar uma experiência simples e agradável para cada cliente.
+              </p>
+              <button class="mock-cta" data-page="contato">ENTRAR EM CONTATO</button>
+            </div>
+          `;
+        }
+
+        else if (pagina === "contato") {
+          conteudo.innerHTML = `
+            <div style="padding:30px 22px">
+              <span class="demo-label">FALE CONOSCO</span>
+              <h3 style="color:#172838">Entre em contato</h3>
+              <p style="color:#64717d;font-size:13px">
+                Estamos disponíveis para tirar suas dúvidas.
+              </p>
+
+              <div class="mock-section" style="text-align:left">
+                <strong>📞 Telefone</strong>
+                <small>(00) 00000-0000</small>
+              </div>
+
+              <div class="mock-section" style="text-align:left;margin-top:10px">
+                <strong>✉ E-mail</strong>
+                <small>contato@suaempresa.com</small>
+              </div>
+            </div>
+          `;
+        }
+
+        else if (pagina === "carrinho") {
+          const total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+
+          conteudo.innerHTML = `
+            <div style="padding:25px">
+              <h3 style="color:#172838">🛒 Meu carrinho</h3>
+
+              ${
+                carrinho.length
+                  ? carrinho.map((item, index) => `
+                    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #e5e8eb">
+                      <span style="color:#172838;font-size:12px">${item.nome}</span>
+                      <strong style="color:#98772c;font-size:12px">R$ ${dinheiro(item.preco)}</strong>
+                      <button data-remove="${index}" style="border:0;background:none;color:#b33;cursor:pointer;font-size:11px">Remover</button>
+                    </div>
+                  `).join("")
+                  : `<p style="color:#71808b;font-size:13px">Seu carrinho está vazio. Escolha algum produto para começar.</p>`
+              }
+
+              <h3 style="color:#172838;margin-top:20px">
+                Total: R$ ${dinheiro(total)}
+              </h3>
+
+              <button class="mock-cta" data-page="finalizar" style="margin-top:10px">
+                FINALIZAR COMPRA
+              </button>
+
+              <button class="preview-button" data-page="produtos">
+                CONTINUAR COMPRANDO
+              </button>
+            </div>
+          `;
+        }
+
+        else if (pagina === "finalizar") {
+          if (!carrinho.length) {
+            conteudo.innerHTML = `
+              <div style="padding:25px">
+                <h3 style="color:#172838">Seu carrinho está vazio</h3>
+                <p style="color:#71808b;font-size:13px">Adicione um produto antes de continuar.</p>
+                <button class="mock-cta" data-page="produtos">VER PRODUTOS</button>
+              </div>
+            `;
+            return;
+          }
+
+          const total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+
+          conteudo.innerHTML = `
+            <div style="padding:25px">
+              <span class="demo-label">FINALIZAÇÃO DE COMPRA</span>
+              <h3 style="color:#172838">Seus dados de compra</h3>
+
+              <p style="color:#71808b;font-size:12px">
+                Esta é uma demonstração visual do processo de compra.
+              </p>
+
+              <form id="demoCheckout">
+                <label style="display:block;margin:15px 0 5px;color:#172838;font-size:12px">Nome</label>
+                <input name="nome" required placeholder="Seu nome" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:7px">
+
+                <label style="display:block;margin:15px 0 5px;color:#172838;font-size:12px">E-mail</label>
+                <input name="email" type="email" required placeholder="seu@email.com" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:7px">
+
+                <label style="display:block;margin:15px 0 5px;color:#172838;font-size:12px">Forma de pagamento</label>
+                <select name="pagamento" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:7px">
+                  <option>Pix</option>
+                  <option>Cartão de crédito</option>
+                  <option>Boleto</option>
+                </select>
+
+                <h3 style="color:#172838;margin-top:20px">
+                  Total: R$ ${dinheiro(total)}
+                </h3>
+
+                <button class="mock-cta" type="submit" style="margin-top:10px">
+                  CONFIRMAR DEMONSTRAÇÃO
+                </button>
+              </form>
+            </div>
+          `;
+        }
+      }
+
+
+      /* CLIQUES DA LOJA */
+      loja.addEventListener("click", event => {
+        const pageButton = event.target.closest("[data-page]");
+        const addButton = event.target.closest("[data-add]");
+        const removeButton = event.target.closest("[data-remove]");
+
+        if (pageButton) {
+          abrirPagina(pageButton.dataset.page);
+        }
+
+        if (addButton) {
+          const produto = produtos[Number(addButton.dataset.add)];
+
+          if (produto) {
+            carrinho.push(produto);
+            atualizarCarrinho();
+
+            const mensagem = document.getElementById("storeMessage");
+
+            if (mensagem) {
+              mensagem.textContent = produto.nome + " adicionado ao carrinho!";
+            }
+
+            addButton.textContent = "ADICIONADO ✓";
+          }
+        }
+
+        if (removeButton) {
+          carrinho.splice(Number(removeButton.dataset.remove), 1);
+          atualizarCarrinho();
+          abrirPagina("carrinho");
+        }
+      });
+
+
+      /* FINALIZAÇÃO SIMULADA */
+      loja.addEventListener("submit", event => {
+        if (event.target.id === "demoCheckout") {
+          event.preventDefault();
+
+          alert("Esta é apenas uma demonstração. Nenhuma compra ou pagamento foi realizado.");
+        }
+      });
+
+
+      abrirPagina("inicio");
+    }
+
+
+    /* FECHAR DEMONSTRAÇÃO */
+    function closeDemo() {
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+
+    /* BOTÕES DE DEMONSTRAÇÃO */
+    document.querySelectorAll("[data-demo]").forEach(button => {
+      button.addEventListener("click", () => {
+        openDemo(button.dataset.demo);
+      });
+    });
+
+
+    /* FECHAR PELO X */
+    closeButton.addEventListener("click", closeDemo);
+
+
+    /* FECHAR CLICANDO FORA */
+    overlay.addEventListener("click", event => {
+      if (event.target === overlay) {
+        closeDemo();
+      }
+    });
+
+
+    /* FECHAR COM ESC */
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && overlay.classList.contains("open")) {
+        closeDemo();
+      }
+    });
+  </script>
+
+  <script src="transitions.js"></script>
 
 </body>
 </html>
